@@ -20,7 +20,7 @@ h1{
     margin: 0px;
     overflow: hidden;
     text-align: center;
-    justify-content: center;
+
 }
 
 .navbar a{
@@ -37,6 +37,6 @@ h1{
 }
 
 .navbar li{
-    float: left;
+    float: center;
 
 }
