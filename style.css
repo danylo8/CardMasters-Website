@@ -1,6 +1,6 @@
-@font-face{
+@font-face {
   font-family: 'KrusyidaScript';
-  src: url(KrusyidaScript-w1xOx.ttf)
+  src: url('KrusyidaScript-w1xOx.ttf');
 }
 
 header
@@ -9,7 +9,7 @@ header
   padding: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   text-align: center;
-  text-family: "KrusyidaScript"
+  font-family: 'KrusyidaScript';
 
 }
 
