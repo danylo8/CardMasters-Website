@@ -17,7 +17,7 @@ body{
     margin: 0;
     padding:0;
     background: url('Cardmasters-bg-2.png') left top no-repeat, url('Cardmasters-bg-1.png') right top no-repeat;
-    background-size: 700px, 700px;
+    background-size: 700px, auto;
     background-color: white;
 
 }
