@@ -16,7 +16,7 @@ header
 body{
     margin: 0;
     padding:0;
-    background: url('images/Cardmasters-bg-2.png') left top, url('images/Cardmasters-bg-1.png') right top;
+    background: url('Cardmasters-bg-2.png') left top, url('Cardmasters-bg-1.png') right top;
     background-color: white;
 
 }
