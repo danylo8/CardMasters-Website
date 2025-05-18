@@ -24,6 +24,7 @@ body{
 
 main{
     padding: 15px;
+    text-align: center;
 }
 
 h1{
@@ -61,7 +62,7 @@ h1{
 video.bg-left{
   position: fixed;
   top: 0;
-  right:0;
+  left:0;
   object-fit: cover;
   z-index: -1;
 }
