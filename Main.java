@@ -13,6 +13,8 @@ public class Main
         intitalizeDeck(mainDeck);
         shuffleDeck(mainDeck);
         System.out.println(mainDeck);
+        Cuarenta test = new Cuarenta();
+        System.out.println(test.getDeck());
     }
 
     //Try to figure out a way to fix the code
