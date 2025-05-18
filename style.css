@@ -18,7 +18,12 @@ body{
     padding:0;
     background-size: 700px, auto;
     background-color: white;
+    overflow-x: hidden;
 
+}
+
+main{
+    padding: 15px;
 }
 h1{
     text-align: center;
