@@ -55,6 +55,7 @@ h1{
 video.bg-left{
     position: fixed;
     top: 0;
+    left: 0;
     height: 100vh;
     width: 350px;
     object-fit: cover;
@@ -64,6 +65,7 @@ video.bg-left{
 video.bg-right {
   position: fixed;
   top: 0;
+  right:0;
   height: 100vh;
   width: 350px;
   object-fit: cover;
