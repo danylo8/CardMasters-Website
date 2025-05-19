@@ -5,16 +5,13 @@ public class Main
 {
     static String[] cardNum = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
     static String[] cardType = {"Heart", "Spades", "Clubs", "Diamonds"};
-    static ArrayList<String> playerDeck = new ArrayList<>();
-    static ArrayList<String> oppsDeck =  new ArrayList<>();
     static ArrayList<String> mainDeck = new ArrayList<>();
+    static ArrayList<String> activeDeck = new ArrayList<>();
     public static void main(String[] args) 
     {
         intitalizeDeck(mainDeck);
         shuffleDeck(mainDeck);
-        System.out.println(mainDeck);
-        Cuarenta test = new Cuarenta();
-        System.out.println(test.getDeck());
+        
     }
 
     //Try to figure out a way to fix the code
