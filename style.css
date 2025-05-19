@@ -24,7 +24,10 @@ body{
 }
 
 main{
-    padding: 15px;
+    padding-top: 50px;
+    padding-right: 370px;
+    padding-bottom: 50px;
+    padding-left: 370px;
     text-align: center;
 }
 
