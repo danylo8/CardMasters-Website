@@ -17,7 +17,7 @@ header
 body{
     margin: 0;
     padding:0;
-    background-size: 1000px, 700px;
+    background-size: 750px, auto;
     background-color: white;
     overflow-x: hidden;
     text-align: center;
@@ -25,10 +25,7 @@ body{
 }
 
 main{
-    padding-top: 50px;
-    padding-right: 370px;
-    padding-bottom: 50px;
-    padding-left: 370px;
+
     text-align: center;
 }
 
