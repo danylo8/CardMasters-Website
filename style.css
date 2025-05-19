@@ -91,35 +91,10 @@ video.bg-right {
 }
 
 .box {
-  background-color: #f9e8a8;
-  border: 2px solid #7a1812;
-  padding-top: 30px;
-  padding-right: 40px;
-  padding-bottom: 30px;
-  padding-left: 40px;
-
-  width:100%;
-  max-width: 100px
-  box-shadow: 0 6px 15px rgba(122, 24, 18, 0.25);
-  font-family: 'KrusyidaScript';
-  color: #3a1e1e;
-  text-align: center;
-
-  margin-top: 40px;
-  margin-right: 100px;
-  margin-bottom: 40px;
-  margin-left: 100px;
-}
-
-.box h1 {
-  margin-top: 0px;
-  margin-right: 0px;
-  margin-bottom: 15px;
-  margin-left: 0px;
-  color: #7a1812;
-
-}
-
-.box h2 {
-  color: #4a2c2c;
-}
+    width: 200px;
+    height: 100px;
+    background-color: lightblue;
+    border: 2px solid blue;
+    padding: 10px;
+    margin: 10px;
+        }
