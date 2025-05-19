@@ -104,6 +104,11 @@ video.bg-right {
   font-family: 'KrusyidaScript';
   color: #3a1e1e;
   text-align: center;
+
+  margin-top: 40px;
+  margin-right: auto;
+  margin-bottom: 40px;
+  margin-left: auto;
 }
 
 .box h1 {
