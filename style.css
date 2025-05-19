@@ -5,11 +5,11 @@
 
 header
 {
+  color: #7a1812;
   background-color: #fce8e6;
   padding: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   text-align: center;
-  color: #7a1812;
   font-family: 'KrusyidaScript';
 
 }
@@ -17,7 +17,7 @@ header
 body{
     margin: 0;
     padding:0;
-    background-size: 700px, auto;
+    background-size: 1000px, 700px;
     background-color: white;
     overflow-x: hidden;
     text-align: center;
