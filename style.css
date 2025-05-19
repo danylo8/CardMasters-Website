@@ -66,6 +66,7 @@ h1{
 
 
 video.bg-left{
+  display: inline-block
   position: fixed;
   top: 0;
   left:0;
@@ -74,6 +75,7 @@ video.bg-left{
 }
 
 video.bg-right {
+  display: inline-block
   position: fixed;
   top: 0;
   right:0;
