@@ -106,9 +106,9 @@ video.bg-right {
   text-align: center;
 
   margin-top: 40px;
-  margin-right: auto;
+  margin-right: 100px;
   margin-bottom: 40px;
-  margin-left: auto;
+  margin-left: 100px;
 }
 
 .box h1 {
