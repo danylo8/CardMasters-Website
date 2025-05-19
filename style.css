@@ -63,17 +63,17 @@ h1{
 
 
 video.bg-left{
+  position: fixed;
   top: 0;
   left:0;
-  position: fixed;
   object-fit: cover;
   z-index: -1;
 }
 
 video.bg-right {
+  position: fixed;
   top: 0;
   right:0;
-  position: fixed;
   object-fit: cover;
   z-index: -1;
 }
