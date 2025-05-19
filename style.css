@@ -87,3 +87,12 @@ video.bg-right {
   margin: 0;
   padding: 0;
 }
+
+.box {
+    width: 200px;
+    height: 100px;
+    background-color: lightred;
+    border: 2px solid yellow;
+    padding: 10px;
+    margin: 10px;
+}
