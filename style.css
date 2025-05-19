@@ -14,6 +14,7 @@ header
   text-align: center;
   font-family: 'KrusyidaScript';
 
+
 }
 
 body{
@@ -40,6 +41,8 @@ h2{
 }
 
 .navbar ul{
+    position: fixed;
+    left: 130px;
     list-style: none;
     background-color: #fff3c6;
     padding: 10px;
@@ -48,7 +51,7 @@ h2{
     border: 2px solid #a6192e;
     border-radius: 12px;
     box-shadow: 0 6px 15px rgba(122, 24, 18, 0.25);
-
+    width: 80%
 
 }
 
@@ -73,7 +76,7 @@ h2{
 }
 
 .navbar li{
-    display: inline-block;
+    display:inline-block;
 
 }
 
@@ -144,8 +147,8 @@ video.bg-right2 {
   color: #3a1e1e;
   text-align: center;
   position:relative;
-  top: 40px;
-  left:530px;
+  top: 90px;
+  left:490px;
 }
 
 .box h1 {
@@ -173,8 +176,8 @@ video.bg-right2 {
   color: #3a1e1e;
   text-align: center;
   position:relative;
-  top: 90px;
-  left:530px;
+  top: 120px;
+  left:490px;
 }
 
 .box2 h1 {
