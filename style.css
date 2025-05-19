@@ -66,19 +66,19 @@ h1{
 
 
 video.bg-left{
-  display: inline-block
-  position: fixed;
   top: 0;
   left:0;
+  display: inline-block
+  position: fixed;
   object-fit: cover;
   z-index: -1;
 }
 
 video.bg-right {
-  display: inline-block
-  position: fixed;
   top: 0;
   right:0;
+  display: inline-block
+  position: fixed;
   object-fit: cover;
   z-index: -1;
 }
