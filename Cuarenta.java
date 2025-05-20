@@ -39,6 +39,15 @@ public class Cuarenta extends Main
             fourtyDeck.remove(0);
         }
         System.out.println(playerDeck);
+        if(!(fourOfAKind(playerDeck).equals(null)))
+        {
+            System.out.println(fourOfAKind(playerDeck) + " You automatically win!");
+        }else if(!(fourOfAKind(oppsDeck).equals(null)))
+        {
+            System.out.println(fourOfAKind(oppsDeck) + " you automatically lose");
+        }else{
+            
+        }
     }
 
     public ArrayList<String> getDeck()
