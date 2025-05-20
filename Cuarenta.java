@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 public class Cuarenta extends Main
 {
@@ -9,7 +10,10 @@ public class Cuarenta extends Main
     static ArrayList<String> oppsDeck =  new ArrayList<>();
     static ArrayList<String> fourtyDeck = new ArrayList<>();
     static ArrayList<String> activeDeck = new ArrayList<>();
+    static Scanner scan = new Scanner(System.in);
     static int playerPoints = 0;
+    static boolean playerTurn = true;
+    static boolean oppsTurn = false;
     static int oppPoints = 0; 
 
     public Cuarenta()
@@ -38,21 +42,42 @@ public class Cuarenta extends Main
         {
             fourtyDeck.remove(0);
         }
+        System.out.println("Your cards are:");
         System.out.println(playerDeck);
-        if(!(fourOfAKind(playerDeck).equals(null)))
+
+        //initial 4OfAKind run
+        String temp = "";
+        if(!(fourOfAKind(playerDeck).equals(temp)))
         {
             System.out.println(fourOfAKind(playerDeck) + " You automatically win!");
-        }else if(!(fourOfAKind(oppsDeck).equals(null)))
+        }else if(!(fourOfAKind(oppsDeck).equals(temp)))
         {
             System.out.println(fourOfAKind(oppsDeck) + " you automatically lose");
-        }else{
-            
+        }else if(!(fourOfAKind(playerDeck).equals(temp)) && !(fourOfAKind(oppsDeck).equals(temp))){
+            System.out.println("It's a tie! Both players have gotten a four of a kind");
+        }
+
+        //first round; player's turn
+        while(playerTurn == true)
+        {
+            System.out.println("What card do you want to play? Type the full name of the card in question");
+            String choice = scan.nextLine().trim().toLowerCase();
         }
     }
 
     public ArrayList<String> getDeck()
     {
         return fourtyDeck;
+    }
+
+    public ArrayList<String> getPlayerDeck()
+    {
+        return playerDeck;
+    }
+
+    public ArrayList<String> getoppsDeck()
+    {
+        return oppsDeck;
     }
     
     public static void intitalizeDeck(ArrayList<String> deck)
@@ -77,8 +102,7 @@ public class Cuarenta extends Main
                 if(j==i)
                 {
                     j++;
-                }
-                if(deck.get(j).substring(0,1).equals(match))
+                }else if(deck.get(j).substring(0,1).equals(match))
                 {
                     temp++;
                 }
@@ -90,7 +114,7 @@ public class Cuarenta extends Main
                 temp = 0;
             }
         }
-        return null;
+        return "";
     }
 
     public String ronda(ArrayList<String> deck)
@@ -104,8 +128,7 @@ public class Cuarenta extends Main
                 if(j==i)
                 {
                     j++;
-                }
-                if(deck.get(j).substring(0,1).equals(match))
+                }else if(deck.get(j).substring(0,1).equals(match))
                 {
                     temp++;
                 }
@@ -115,7 +138,7 @@ public class Cuarenta extends Main
                 return "Ronda! 3 points awarded!";
             }
         }
-        return null;
+        return "";
     }
 
     public static void shuffleDeck(ArrayList<String> deck)
