@@ -8,6 +8,8 @@ public class Cuarenta extends Main
     static String[] cardType = {"Hearts", "Spades", "Clubs", "Diamonds"};
     static ArrayList<String> playerDeck = new ArrayList<>();
     static ArrayList<String> oppsDeck =  new ArrayList<>();
+    static ArrayList<String> playerTrick = new ArrayList<>();
+    static ArrayList<String> oppsTrick =  new ArrayList<>();
     static ArrayList<String> fourtyDeck = new ArrayList<>();
     static ArrayList<String> activeDeck = new ArrayList<>();
     static Scanner scan = new Scanner(System.in);
@@ -58,10 +60,11 @@ public class Cuarenta extends Main
         }
 
         //first round; player's turn
-        while(playerTurn == true)
+        while(playerTurn)
         {
             System.out.println("What card do you want to play? Type the full name of the card in question");
-            String choice = scan.nextLine().trim().toLowerCase();
+            String choice = scan.nextLine().trim();
+            playerDeck.remove(choice);
         }
     }
 
@@ -157,7 +160,7 @@ public class Cuarenta extends Main
     {
         if(deck.size() == 0)
         {
-            return null;
+            return "There are no more cards! The game is over!";
         }else{
             return deck.remove(0);
         }

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 public class Main
 {
@@ -7,9 +8,15 @@ public class Main
     static String[] cardType = {"Hearts", "Spades", "Clubs", "Diamonds"};
     static ArrayList<String> mainDeck = new ArrayList<>();
     static ArrayList<String> activeDeck = new ArrayList<>();
+    static Scanner scan = new Scanner(System.in);
     public static void main(String[] args) 
     {
-        Cuarenta game = new Cuarenta();
+        System.out.println("What card game would you like to play?");
+        String choice = scan.nextLine().trim().toLowerCase();
+        if(choice.equals("cuarenta"))
+        {
+            Cuarenta game = new Cuarenta();
+        }
     }
 
     //Try to figure out a way to fix the code
