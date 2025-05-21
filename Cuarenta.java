@@ -16,6 +16,7 @@ public class Cuarenta extends Main
     static int playerPoints = 0;
     static boolean playerTurn = true;
     static boolean oppsTurn = false;
+    static boolean round = true;
     static int oppPoints = 0; 
 
     public Cuarenta()
@@ -60,11 +61,14 @@ public class Cuarenta extends Main
         }
 
         //first round; player's turn
-        while(playerTurn)
+        while(round)
         {
-            System.out.println("What card do you want to play? Type the full name of the card in question");
-            String choice = scan.nextLine().trim();
-            playerDeck.remove(choice);
+            while(playerTurn)
+            {
+                System.out.println("What card do you want to play? Type the full name of the card in question");
+                String choice = scan.nextLine().trim();
+                playerDeck.remove(choice);
+            }
         }
     }
 

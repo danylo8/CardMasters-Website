@@ -12,7 +12,7 @@ public class Main
     public static void main(String[] args) 
     {
         System.out.println("What card game would you like to play?");
-        String choice = scan.nextLine().trim().toLowerCase();
+        String choice = scan.nextLine().trim();
         if(choice.equals("cuarenta"))
         {
             Cuarenta game = new Cuarenta();
