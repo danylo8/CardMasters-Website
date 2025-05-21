@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Cuarenta extends Main
 {
-    static String[] cardNum = {"1", "2", "3", "4", "5", "6", "7", "J", "Q", "K"};
+    static String[] cardNum = {"Ace", "2", "3", "4", "5", "6", "7", "J", "Q", "K"};
     static String[] cardType = {"Hearts", "Spades", "Clubs", "Diamonds"};
     static ArrayList<String> playerDeck = new ArrayList<>();
     static ArrayList<String> oppsDeck =  new ArrayList<>();
@@ -65,9 +65,29 @@ public class Cuarenta extends Main
         {
             while(playerTurn)
             {
+                if(!(ronda(playerDeck).equals("")))
+                {
+                    ronda(playerDeck);
+                    playerPoints += 4;
+                }
                 System.out.println("What card do you want to play? Type the full name of the card in question");
                 String choice = scan.nextLine().trim();
                 playerDeck.remove(choice);
+                activeDeck.add(choice);
+                System.out.println(activeDeck);
+                playerTurn = false;
+                oppsTurn = true;
+            }
+
+            while(oppsTurn)
+            {
+                if(!(ronda(oppsDeck).equals("")))
+                {
+                    ronda(oppsDeck);
+                    oppPoints += 4;
+                }
+                oppsTurn = false;
+                playerTurn = true;
             }
         }
     }

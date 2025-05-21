@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main
 {
-    static String[] cardNum = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
+    static String[] cardNum = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
     static String[] cardType = {"Hearts", "Spades", "Clubs", "Diamonds"};
     static ArrayList<String> mainDeck = new ArrayList<>();
     static ArrayList<String> activeDeck = new ArrayList<>();
