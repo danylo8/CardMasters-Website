@@ -109,6 +109,7 @@ public class Cuarenta extends Main
     
     public static void intitalizeDeck(ArrayList<String> deck)
     {
+        deck.clear();
         for(int i = 0; i < cardType.length; i++)
         {
             for(int j = 0;j < cardNum.length; j++)
@@ -172,11 +173,29 @@ public class Cuarenta extends Main
     {
         //String temp = "";
         //for(int i = 0; i < deck.length; i++)
-        {
+        //{
             //temp = deck[i];
             //deck[i] = deck[Math.random()*deck.length];
             //deck[Math.random()*deck.length] = temp;
             Collections.shuffle(deck);
+        //}
+    }
+
+    public static void matchingPlayer(ArrayList<String> deck, ArrayList<String> userDeck, int temp)
+    {
+        if(deck.get(0).equals(userDeck.get(temp)))
+        {
+            playerTrick.add(deck.remove(0));
+            playerTrick.add(userDeck.remove(temp));
+        }
+    }
+
+     public static void matchingOpp(ArrayList<String> deck, ArrayList<String> userDeck, int temp)
+    {
+        if(deck.get(0).equals(userDeck.get(temp)))
+        {
+            oppsTrick.add(deck.remove(0));
+            oppsTrick.add(userDeck.remove(temp));
         }
     }
 
@@ -187,6 +206,34 @@ public class Cuarenta extends Main
             return "There are no more cards! The game is over!";
         }else{
             return deck.remove(0);
+        }
+    }
+
+    public boolean matching(String card)
+    {
+        if(card.equals(activeDeck.get(activeDeck.size()-1)))
+        {
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public String additon(String card)
+    {
+        int temp = 0;
+        int refer = Integer.parseInt(card.substring(0, 1));
+        for(int i = activeDeck.size()-1; temp < refer; i--)
+        {
+            if(!(activeDeck.get(i).substring(0, 1).equals("J") || activeDeck.get(i).substring(0, 1).equals("Q") || activeDeck.get(i).substring(0, 1).equals("K")))
+            {
+                temp += Integer.parseInt(activeDeck.get(i).substring(0, 1));
+            }
+        } 
+        if(temp == refer)
+        {
+            return ""
+        }else{
+            return "";
         }
     }
 }
