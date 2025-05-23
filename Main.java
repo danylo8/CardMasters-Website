@@ -19,8 +19,20 @@ public class Main
         }
     }
 
+    public static void intitalizeDeck(ArrayList<String> deck)
+    {
+        deck.clear();
+        for(int i = 0; i < cardType.length; i++)
+        {
+            for(int j = 0;j < cardNum.length; j++)
+            {
+                deck.add(cardNum[j] + " of " + cardType[i]);
+            }
+        }
+    }
+
     //Try to figure out a way to fix the code
-   //public static void shuffleDeck(ArrayList<String> deck)
+   public static void shuffleDeck(ArrayList<String> deck)
     {
         //String temp = "";
         //for(int i = 0; i < deck.length; i++)
@@ -28,7 +40,7 @@ public class Main
             //temp = deck[i];
             //deck[i] = deck[Math.random()*deck.length];
             //deck[Math.random()*deck.length] = temp;
-            //Collections.shuffle(deck);
+            Collections.shuffle(deck);
         }
     }
 }

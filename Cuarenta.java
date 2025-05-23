@@ -231,7 +231,7 @@ public class Cuarenta extends Main
         } 
         if(temp == refer)
         {
-            return ""
+            return "";
         }else{
             return "";
         }
