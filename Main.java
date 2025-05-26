@@ -15,7 +15,10 @@ public class Main
         String choice = scan.nextLine().trim();
         if(choice.equals("cuarenta"))
         {
-            Cuarenta game = new Cuarenta();
+            Cuarenta gameCuarenta = new Cuarenta();
+        }else if(choice.equals("spit"))
+        {
+            Spit spitGame = new Spit();
         }
     }
 
