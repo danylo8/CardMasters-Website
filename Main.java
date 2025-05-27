@@ -9,6 +9,8 @@ public class Main
     static ArrayList<String> mainDeck = new ArrayList<>();
     static ArrayList<String> activeDeck = new ArrayList<>();
     static Scanner scan = new Scanner(System.in);
+    int playerCounts = 0;
+    int oppsCounts = 0;
     public static void main(String[] args) 
     {
         System.out.println("What card game would you like to play?");

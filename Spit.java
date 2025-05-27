@@ -19,15 +19,41 @@ public class Spit extends Main
     static ArrayList<String> playerFive = new ArrayList<>();
     static ArrayList<String> oppsFive =  new ArrayList<>();
     static Scanner scan = new Scanner(System.in);
+    boolean gameActive = false;
+    boolean playerWin = false;
+    boolean oppsWin = false;
 
     public Spit()
     {
         //intro
         System.out.println("Welcome to Spit! If you need to learn the rules, you may read them at the bottom of the page\n");
         intitalizeSpit();
-        
+        gameActive = true;
+        //play loop
+        while(gameActive)
+        {
+            if(playerWin || oppsWin)
+            {
+                gameActive = false;
+            }else{
+                System.out.println("\nWhat card would you like to play in your pile? (Type the card's full name)");
+                String choice = scan.nextLine().trim();
+                playCard(choice);
+                oppsPlayCard();
+                winCheck();
+                if(playerWin)
+                {
+                    
+                }else if(oppsWin)
+                {
+
+                }
+            }
+        }
+
     }
 
+    //sets up the decks for the game
     public void intitalizeSpit()
     {
         super.intitalizeDeck(mainDeck);
@@ -41,6 +67,7 @@ public class Spit extends Main
                 oppsDeck.add(mainDeck.get(i));
             }
         }
+        //This took quite a bit of time to finalize
         playerOne.add(playerDeck.remove(0));
         oppsOne.add(oppsDeck.remove(0));
         for(int i = 0; i < 2; i++)
@@ -63,31 +90,59 @@ public class Spit extends Main
             playerFive.add(playerDeck.remove(0));
             oppsFive.add(oppsDeck.remove(0));
         }
+        playerPile.add(playerDeck.remove(0));
+        oppsPile.add(oppsDeck.remove(0));
         System.out.println("Your cards are as follows:\n" + "Pile 1: "+ playerOne.get(0)+"\nPile 2: " + playerTwo.get(0) + "\nPile 3: " + playerThree.get(0)+ "\nPile 4: " + playerFour.get(0)+ "\nPile 5: " + playerFive.get(0) + "\nYour current hand: " + playerDeck.get(0));
-        System.out.println("\n What card would you like to play in your pile? (Type the card's full name)");
-        String choice = scan.nextLine().trim();
+        System.out.println("Your center pile has been set with the " + playerPile.get(0) + " and your opponents pile has been set with " + oppsPile.get(0));
+    }
+
+    public void playCard(String choice)
+    {
         if(choice.equals(playerOne.get(0)))
         {
-            playerPile.add(playerOne.remove(0));
+            if(checkCard(playerPile, choice))
+            {
+                playerPile.add(playerOne.remove(0));
+            }
         }else if(choice.equals(playerTwo.get(0)))
         {
-            playerPile.add(playerTwo.remove(0));
+            if(checkCard(playerPile, choice))
+            {
+                playerPile.add(playerTwo.remove(0));
+            }
         }else if(choice.equals(playerThree.get(0)))
         {
-            playerPile.add(playerThree.remove(0));
+            if(checkCard(playerPile, choice))
+            {
+                playerPile.add(playerThree.remove(0));
+            }
         }else if(choice.equals(playerFour.get(0)))
         {
-            playerPile.add(playerFour.remove(0));
+            if(checkCard(playerPile, choice))
+            {
+                playerPile.add(playerFour.remove(0));
+            }
         }else if(choice.equals(playerFive.get(0)))
         {
-            playerPile.add(playerFive.remove(0));
+            if(checkCard(playerPile, choice))
+            {
+                playerPile.add(playerFive.remove(0));
+            }
         }else if(choice.equals(playerDeck.get(0)))
         {
-            playerPile.add(playerDeck.remove(0));
+            if(checkCard(playerPile, choice))
+            {
+                playerPile.add(playerDeck.remove(0));
+            }
+        }else{
+            System.out.println("Can't play that!");
+            String choice2 = scan.nextLine().trim();
+            playCard(choice2);
         }
     }
 
-    public boolean playCard(ArrayList<String> deck, String card)
+    //checks to be sure the card could be played or not(this took a while)
+    public boolean checkCard(ArrayList<String> deck, String card)
     {
         int refer = 0;
         int temp = 0;
@@ -126,6 +181,77 @@ public class Spit extends Main
             return true;
         }else{
             return false;
+        }
+    }
+    
+    //specifically for the computer, not to be shown to player
+    private void oppsPlayCard()
+    {
+        if(checkCard(oppsPile, oppsOne.get(0)))
+        {
+            oppsPile.add(oppsOne.remove(0));
+        }else if(checkCard(oppsPile, oppsTwo.get(0)))
+        {
+            oppsPile.add(oppsTwo.remove(0));
+        }else if(checkCard(oppsPile, oppsThree.get(0)))
+        {
+            oppsPile.add(oppsThree.remove(0));
+        }else if(checkCard(oppsPile, oppsFour.get(0)))
+        {
+            oppsPile.add(oppsFour.remove(0));
+        }else if(checkCard(oppsPile, oppsFive.get(0)))
+        {
+            oppsPile.add(playerFive.remove(0));
+        }else if(checkCard(oppsPile, oppsDeck.get(0)))
+        {
+                oppsPile.add(oppsDeck.remove(0));
+        }
+    }
+
+    public void winCheck()
+    {
+        if(playerDeck.size()==0)
+        {
+            playerWin = true;
+        }else if(oppsDeck.size()==0)
+        {
+            oppsWin = true;
+        }
+    }
+
+    public void pileSlap()
+    {
+        //int oppsWait = (int)(Math.random()*4);
+        int desiredPile = 0;
+        int otherPile = 0;
+
+        if(playerPile.size() > oppsPile.size())
+        {
+            desiredPile = 1;
+            otherPile = 2;
+        }else{
+            desiredPile = 2;
+            otherPile = 1;
+        }
+        System.out.println("First pile has " + playerPile.size() + " cards and the second has " + oppsPile.size() + " cards");
+        System.out.println("Quick! Type 1 or 2 respectively for the pile you want to slap!");
+       // s.close;
+        if (Math.random()<0.3)
+        {
+            System.out.println("Too late, your opponent has already claimed Pile " +  desiredPile + ". You get pile " + otherPile);
+        }else{
+
+        }
+        if(desiredPile == 1)
+        {
+             for(int i = 0; i < playerDeck.size(); i++)
+            {
+                playerDeck.add(null);
+            }
+            for(int i = 0; i < oppsDeck.size(); i++)
+            {
+                oppsDeck.add(null);
+            }
         }
     }
 }
