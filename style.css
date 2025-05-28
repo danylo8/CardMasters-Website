@@ -142,15 +142,15 @@ video.bg-right2 {
   background-color: #f9e8a8;
   border: 2px solid #7a1812;
   padding-top: 10px;
-  width:500px;
-  height: 250px;
+  width: 37%;
+  height: 30%;
   border-radius: 25px;
   box-shadow: 0 6px 15px rgba(122, 24, 18, 0.25);
   font-family: 'KrusyidaScript';
   color: #3a1e1e;
   text-align: center;
-  top: 38%;
-  left: 33%;
+  top: 40%;
+  left: 31%;
 }
 
 .box h1 {
@@ -171,15 +171,15 @@ video.bg-right2 {
   background-color: #f9e8a8;
   border: 2px solid #7a1812;
   padding-top: 10px;
-  width:500px;
-  height: 100px;
+  width: 37%;
+  height: 18%;
   border-radius: 25px;
   box-shadow: 0 6px 15px rgba(122, 24, 18, 0.25);
   font-family: 'KrusyidaScript';
   color: #3a1e1e;
   text-align: center;
   top: 80%;
-  left:33%;
+  left:31%;
 }
 
 .box2 h1 {
@@ -203,14 +203,14 @@ video.bg-right2 {
   background-color: #f9e8a8;
   border: 2px solid #7a1812;
   padding-top: 10px;
-  width:300px;
-  height: 100px;
+  width:20%;
+  height: 13%;
   border-radius: 25px;
   box-shadow: 0 6px 15px rgba(122, 24, 18, 0.25);
   font-family: 'KrusyidaScript';
   color: #3a1e1e;
   text-align: center;
-  top: 100%;
+  top: 105%;
   left: 39.2%;
 }
 
