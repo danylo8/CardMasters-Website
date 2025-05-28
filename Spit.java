@@ -22,6 +22,8 @@ public class Spit extends Main
     boolean gameActive = false;
     boolean playerWin = false;
     boolean oppsWin = false;
+    int playerCards = 0;
+    int oppsCards = 0;
 
     public Spit()
     {
@@ -35,16 +37,23 @@ public class Spit extends Main
             if(playerWin || oppsWin)
             {
                 gameActive = false;
+                if(playerWin)
+                {
+                    System.out.println("Congratulations, you win the game!");
+                }else if(oppsWin)
+                {
+                    System.out.println("Sorry, but it looks like your opponent won the game, better luck next time!");
+                }
             }else{
                 System.out.println("\nWhat card would you like to play in your pile? (Type the card's full name)");
                 String choice = scan.nextLine().trim();
                 playCard(choice);
                 oppsPlayCard();
                 winCheck();
-                if(playerWin)
-                {
-                    
-                }else if(oppsWin)
+                //To display the decks to the player after cards have been played
+                System.out.println("Your cards are as follows:\n" + "Pile 1: "+ playerOne.get(0)+"\nPile 2: " + playerTwo.get(0) + "\nPile 3: " + playerThree.get(0)+ "\nPile 4: " + playerFour.get(0)+ "\nPile 5: " + playerFive.get(0) + "\nYour current hand: " + playerDeck.get(0));
+                System.out.println("Your center pile has the " + playerPile.get(0) + " and your opponents pile has the " + oppsPile.get(0));
+                if()
                 {
 
                 }
@@ -56,6 +65,8 @@ public class Spit extends Main
     //sets up the decks for the game
     public void intitalizeSpit()
     {
+        playerDeck.clear();
+        oppsDeck.clear();
         super.intitalizeDeck(mainDeck);
         super.shuffleDeck(mainDeck);
         for(int i = 0; i < mainDeck.size();i++)
@@ -135,7 +146,7 @@ public class Spit extends Main
                 playerPile.add(playerDeck.remove(0));
             }
         }else{
-            System.out.println("Can't play that!");
+            System.out.println("Can't play that!, try another.");
             String choice2 = scan.nextLine().trim();
             playCard(choice2);
         }
@@ -224,34 +235,57 @@ public class Spit extends Main
         //int oppsWait = (int)(Math.random()*4);
         int desiredPile = 0;
         int otherPile = 0;
-
-        if(playerPile.size() > oppsPile.size())
-        {
-            desiredPile = 1;
-            otherPile = 2;
-        }else{
-            desiredPile = 2;
-            otherPile = 1;
-        }
+        int dSize = 0;
+        int oSize = 0;
         System.out.println("First pile has " + playerPile.size() + " cards and the second has " + oppsPile.size() + " cards");
         System.out.println("Quick! Type 1 or 2 respectively for the pile you want to slap!");
-       // s.close;
+        String choice = scan.nextLine().trim();
         if (Math.random()<0.3)
         {
+            scan.close();
+            if(playerPile.size() > oppsPile.size())
+            {
+                desiredPile = 1;
+                otherPile = 2;
+            }else{
+                desiredPile = 2;
+                otherPile = 1;
+            }
             System.out.println("Too late, your opponent has already claimed Pile " +  desiredPile + ". You get pile " + otherPile);
         }else{
-
+            desiredPile = Integer.parseInt(choice);
+            otherPile = 3 - desiredPile;
         }
+
         if(desiredPile == 1)
         {
-             for(int i = 0; i < playerDeck.size(); i++)
+            dSize = playerPile.size();
+            oSize = oppsPile.size();
+            for(int i = 0; i < dSize; i++)
             {
-                playerDeck.add(null);
+                playerDeck.add(playerPile.remove(0));
             }
-            for(int i = 0; i < oppsDeck.size(); i++)
+            for(int i = 0; i < oSize; i++)
             {
-                oppsDeck.add(null);
+                oppsDeck.add(oppsPile.remove(0));
+            }
+        }else if(desiredPile == 2)
+        {
+            oSize = playerPile.size();
+            dSize = oppsPile.size();
+            for(int i = 0; i < oSize; i++)
+            {
+                playerDeck.add(oppsPile.remove(0));
+            }
+            for(int i = 0; i < dSize; i++)
+            {
+                oppsDeck.add(playerPile.remove(0));
             }
         }
+    }
+
+    private int calculateCards()
+    {
+        return 0;
     }
 }
