@@ -138,7 +138,7 @@ video.bg-right2 {
 
 
 .box {
-  position: absolute;
+  position: relative;
   background-color: #f9e8a8;
   border: 2px solid #7a1812;
   padding-top: 10px;
@@ -167,7 +167,7 @@ video.bg-right2 {
 
 
 .box2 {
-  position: absolute;
+  position: relative;
   background-color: #f9e8a8;
   border: 2px solid #7a1812;
   padding-top: 10px;
@@ -199,7 +199,7 @@ video.bg-right2 {
 
 }
 .box9 {
-  position: absolute;
+  position: relative;
   background-color: #f9e8a8;
   border: 2px solid #7a1812;
   padding-top: 10px;
@@ -215,12 +215,12 @@ video.bg-right2 {
 }
 
 .box4 {
-  position: absolute;
+  position: relative;
   background-color: #f9e8a8;
   border: 2px solid #7a1812;
   padding-top: 10px;
-  width:500px;
-  height: 250px;
+  width:37%;
+  height: 25%;
   border-radius: 25px;
   box-shadow: 0 6px 15px rgba(122, 24, 18, 0.25);
   font-family: 'KrusyidaScript';
@@ -247,8 +247,8 @@ video.bg-right2 {
     background-color: #f9e8a8;
     border: 2px solid #7a1812;
     padding-top: 10px;
-    width: 300px;
-    height: 100px;
+    width: 22%;
+    height: 10%;
     border-radius: 25px;
     box-shadow: 0 6px 15px rgba(122, 24, 18, 0.25);
     font-family: 'KrusyidaScript';
@@ -263,8 +263,8 @@ video.bg-right2 {
     background-color: #f9e8a8;
     border: 2px solid #7a1812;
     padding-top: 10px;
-    width: 300px;
-    height: 100px;
+    width: 22%;
+    height: 10%;
     border-radius: 25px;
     box-shadow: 0 6px 15px rgba(122, 24, 18, 0.25);
     font-family: 'KrusyidaScript';
@@ -279,8 +279,8 @@ video.bg-right2 {
     background-color: #f9e8a8;
     border: 2px solid #7a1812;
     padding-top: 10px;
-    width: 300px;
-    height: 100px;
+    width: 22%;
+    height: 10%;
     border-radius: 25px;
     box-shadow: 0 6px 15px rgba(122, 24, 18, 0.25);
     font-family: 'KrusyidaScript';
@@ -295,8 +295,8 @@ video.bg-right2 {
     background-color: #f9e8a8;
     border: 2px solid #7a1812;
     padding-top: 10px;
-    width: 300px;
-    height: 100px;
+    width: 22%;
+    height: 10%;
     border-radius: 25px;
     box-shadow: 0 6px 15px rgba(122, 24, 18, 0.25);
     font-family: 'KrusyidaScript';
@@ -345,11 +345,11 @@ video.bg-right2 {
 }
 
 .popup {
-  margin: 22%;
-  padding: 33%;
+  margin: 220px;
+  padding: 330px;
   background: #fff;
   border-radius: 5px;
-  width: 30%;
+  width: 300px;
   position: relative;
   transition: all 5s ease-in-out;
 }
