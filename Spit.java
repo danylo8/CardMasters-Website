@@ -34,6 +34,7 @@ public class Spit extends Main
         //play loop
         while(gameActive)
         {
+            //if someone wins
             if(playerWin || oppsWin)
             {
                 gameActive = false;
@@ -53,9 +54,12 @@ public class Spit extends Main
                 //To display the decks to the player after cards have been played
                 System.out.println("Your cards are as follows:\n" + "Pile 1: "+ playerOne.get(0)+"\nPile 2: " + playerTwo.get(0) + "\nPile 3: " + playerThree.get(0)+ "\nPile 4: " + playerFour.get(0)+ "\nPile 5: " + playerFive.get(0) + "\nYour current hand: " + playerDeck.get(0));
                 System.out.println("Your center pile has the " + playerPile.get(0) + " and your opponents pile has the " + oppsPile.get(0));
-                if()
+                playerCards = calculatePlayerCards();
+                oppsCards = calculateOppsCards();
+                if(playerCards == playerDeck.size() || oppsCards == oppsDeck.size())
                 {
-
+                    pileSlap();
+                    reshuffleDeck();
                 }
             }
         }
@@ -221,10 +225,10 @@ public class Spit extends Main
 
     public void winCheck()
     {
-        if(playerDeck.size()==0)
+        if(playerCards == 0)
         {
             playerWin = true;
-        }else if(oppsDeck.size()==0)
+        }else if(oppsCards == 0)
         {
             oppsWin = true;
         }
@@ -276,16 +280,150 @@ public class Spit extends Main
             for(int i = 0; i < oSize; i++)
             {
                 playerDeck.add(oppsPile.remove(0));
+                
             }
             for(int i = 0; i < dSize; i++)
             {
                 oppsDeck.add(playerPile.remove(0));
             }
         }
+        if(playerOne.get(0) != null)
+        {
+            playerDeck.add(playerOne.remove(0));
+        }
+        if(oppsOne.get(0) != null)
+        {
+            oppsDeck.add(oppsOne.remove(0));
+        }
+        for(int i = 0; i < 2; i++)
+        {
+            if(playerTwo.get(0) != null)
+            {
+                playerDeck.add(playerTwo.remove(0));
+            }
+            if(oppsTwo.get(0) != null)
+            {
+                oppsDeck.add(oppsTwo.remove(0));
+            }
+        }
+        for(int i = 0; i < 3; i++)
+        {
+            if(playerThree.get(0) != null)
+            {
+                playerDeck.add(playerThree.remove(0));
+            }
+            if(oppsThree.get(0) != null)
+            {
+                oppsDeck.add(oppsThree.remove(0));
+            }
+        }
+        for(int i = 0; i < 4; i++)
+        {
+            if(playerFour.get(0) != null)
+            {
+                playerDeck.add(playerFour.remove(0));
+            }
+            if(oppsFour.get(0) != null)
+            {
+                oppsDeck.add(oppsFour.remove(0));
+            }
+        }
+        for(int i = 0; i < 5; i++)
+        {
+            if(playerFive.get(0) != null)
+            {
+                playerDeck.add(playerFive.remove(0));
+            }
+            if(oppsFive.get(0) != null)
+            {
+                oppsDeck.add(oppsFive.remove(0));
+            }
+        }
     }
 
-    private int calculateCards()
+    private int calculatePlayerCards()
     {
-        return 0;
+        int result = 0;
+        result += playerDeck.size();
+        result += playerOne.size();
+        result += playerTwo.size();
+        result += playerThree.size();
+        result += playerFour.size();
+        result += playerFive.size();
+        return result;
+    }
+
+    private int calculateOppsCards()
+    {
+        int result = 0;
+        result += oppsDeck.size();
+        result += oppsOne.size();
+        result += oppsTwo.size();
+        result += oppsThree.size();
+        result += oppsFour.size();
+        result += oppsFive.size();
+        return result;
+    }
+
+    public void reshuffleDeck()
+    {
+        shuffleDeck(playerDeck);
+        shuffleDeck(oppsDeck);
+        playerOne.add(playerDeck.remove(0));
+        oppsOne.add(oppsDeck.remove(0));
+        for(int i = 0; i < 5; i++)
+        {
+            if(i <=1)
+            {
+                if(playerDeck.get(0) != null)
+                {
+                    playerTwo.add(playerDeck.remove(0));
+                }
+                if(oppsDeck.get(0) != null)
+                {
+                    oppsTwo.add(oppsDeck.remove(0));
+                }
+            }
+            if(i <= 2)
+            {
+                if(playerDeck.get(0) != null)
+                {
+                    playerThree.add(playerDeck.remove(0));
+                }
+                if(oppsDeck.get(0) != null)
+                {
+                    oppsThree.add(oppsDeck.remove(0));
+                }
+            }
+            if(i <= 3)
+            {
+                if(playerDeck.get(0) != null)
+                {
+                    playerFour.add(playerDeck.remove(0));
+                }
+                if(oppsDeck.get(0) != null)
+                {
+                    oppsFour.add(oppsDeck.remove(0));
+                }
+            }
+            if(i <= 4)
+            {
+                if(playerDeck.get(0) != null)
+                {
+                    playerFive.add(playerDeck.remove(0));
+                }
+                if(oppsDeck.get(0) != null)
+                {
+                    oppsFive.add(oppsDeck.remove(0));
+                }
+            }
+        }
+        if(playerDeck.get(0) != null)
+        {
+            playerPile.add(playerDeck.remove(0));        }
+        if(oppsDeck.get(0) != null)
+        {
+            oppsPile.add(oppsDeck.remove(0));
+        }
     }
 }
