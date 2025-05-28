@@ -40,9 +40,12 @@ h2{
     font-family: 'Times New Roman';
 }
 
+.navbar {
+    width: 60%;
+}
 .navbar ul{
     position:relative;
-    left: 130px;
+    left: 32.5%;
     list-style: none;
     background-color: #fff3c6;
     padding: 10px;
@@ -51,14 +54,13 @@ h2{
     border: 2px solid #a6192e;
     border-radius: 12px;
     box-shadow: 0 6px 15px rgba(122, 24, 18, 0.25);
-    width: 80%
 
 }
 
 .navbar a{
 
     color: #3a1e1e;
-    background-color:#ffe9b3
+    background-color:#ffe9b3;
     font-family: 'KrusyidaScript';
     text-decoration:none;
     padding: 12px;
@@ -71,7 +73,7 @@ h2{
 .navbar a:hover{
    background-color: #a6192e;
    color: #fff5e6;
-       box-shadow: 0 4px 10px rgba(166, 25, 49, 0.3);
+   box-shadow: 0 4px 10px rgba(166, 25, 49, 0.3);
 
 }
 
@@ -88,7 +90,7 @@ video.bg-left{
   left:0;
   height: 100vh;
   width:25vw;
-  opacity: 0.7
+  opacity: 0.7;
   object-fit: cover;
   z-index: -1;
   margin: 0;
@@ -101,7 +103,7 @@ video.bg-right {
   right:0;
   height: 100vh;
   width:25vw;
-  opacity: 0.7
+  opacity: 0.7;
   object-fit: cover;
   z-index: -1;
   margin: 0;
@@ -114,7 +116,7 @@ video.bg-left2{
   left:370px;
   height: 100vh;
   width:25vw;
-  opacity: 0.7
+  opacity: 0.7;
   object-fit: cover;
   z-index: -1;
   margin: 0;
@@ -127,7 +129,7 @@ video.bg-right2 {
   right:370px;
   height: 100vh;
   width:25vw;
-  opacity: 0.7
+  opacity: 0.7;
   object-fit: cover;
   z-index: -1;
   margin: 0;
@@ -136,6 +138,7 @@ video.bg-right2 {
 
 
 .box {
+  position: absolute;
   background-color: #f9e8a8;
   border: 2px solid #7a1812;
   padding-top: 10px;
@@ -146,9 +149,8 @@ video.bg-right2 {
   font-family: 'KrusyidaScript';
   color: #3a1e1e;
   text-align: center;
-  position:relative;
-  top: 90px;
-  left:490px;
+  top: 38%;
+  left: 33%;
 }
 
 .box h1 {
@@ -165,6 +167,7 @@ video.bg-right2 {
 
 
 .box2 {
+  position: absolute;
   background-color: #f9e8a8;
   border: 2px solid #7a1812;
   padding-top: 10px;
@@ -175,9 +178,8 @@ video.bg-right2 {
   font-family: 'KrusyidaScript';
   color: #3a1e1e;
   text-align: center;
-  position:relative;
-  top: 120px;
-  left:490px;
+  top: 80%;
+  left:33%;
 }
 
 .box2 h1 {
@@ -197,6 +199,7 @@ video.bg-right2 {
 
 }
 .box9 {
+  position: absolute;
   background-color: #f9e8a8;
   border: 2px solid #7a1812;
   padding-top: 10px;
@@ -207,12 +210,12 @@ video.bg-right2 {
   font-family: 'KrusyidaScript';
   color: #3a1e1e;
   text-align: center;
-  position:relative;
-  top: 150px;
-  left:582px;
+  top: 100%;
+  left: 39.2%;
 }
 
 .box4 {
+  position: absolute;
   background-color: #f9e8a8;
   border: 2px solid #7a1812;
   padding-top: 10px;
@@ -223,9 +226,8 @@ video.bg-right2 {
   font-family: 'KrusyidaScript';
   color: #3a1e1e;
   text-align: center;
-  position:relative;
-  top: 90px;
-  left:490px;
+  top: 68%;
+  left: 39%;
 }
 
 .box4 h1 {
@@ -241,7 +243,7 @@ video.bg-right2 {
 }
 
 .box5{
-    position: relative;
+    position: absolute;
     background-color: #f9e8a8;
     border: 2px solid #7a1812;
     padding-top: 10px;
@@ -252,13 +254,12 @@ video.bg-right2 {
     font-family: 'KrusyidaScript';
     color: #3a1e1e;
     text-align: center;
-    position:relative;
-    top: 85px;
-    left:30px;
+    top: 40%;
+    left: 4%;
 }
 
 .box6{
-    position: relative;
+    position: absolute;
     background-color: #f9e8a8;
     border: 2px solid #7a1812;
     padding-top: 10px;
@@ -269,13 +270,12 @@ video.bg-right2 {
     font-family: 'KrusyidaScript';
     color: #3a1e1e;
     text-align: center;
-    position:relative;
-    top: -28px;
-    left:390px;
+    top: 40%;
+    left:28%;
 }
 
 .box7{
-    position: relative;
+    position: absolute;
     background-color: #f9e8a8;
     border: 2px solid #7a1812;
     padding-top: 10px;
@@ -286,13 +286,12 @@ video.bg-right2 {
     font-family: 'KrusyidaScript';
     color: #3a1e1e;
     text-align: center;
-    position:relative;
-    top: -140px;
-    left:760px;
+    top: 40%;
+    left: 52%;
 }
 
 .box8{
-    position: relative;
+    position: absolute;
     background-color: #f9e8a8;
     border: 2px solid #7a1812;
     padding-top: 10px;
@@ -303,9 +302,8 @@ video.bg-right2 {
     font-family: 'KrusyidaScript';
     color: #3a1e1e;
     text-align: center;
-    position:relative;
-    top: -252px;
-    left:1130px;
+    top: 40%;
+    left: 75%;
 }
 
 .button {
@@ -347,8 +345,8 @@ video.bg-right2 {
 }
 
 .popup {
-  margin: 70px auto;
-  padding: 20px;
+  margin: 22%;
+  padding: 33%;
   background: #fff;
   border-radius: 5px;
   width: 30%;
