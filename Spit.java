@@ -73,6 +73,8 @@ public class Spit extends Main
         oppsDeck.clear();
         super.intitalizeDeck(mainDeck);
         super.shuffleDeck(mainDeck);
+        playerDeck.add("There's no cards in this pile");
+        oppsDeck.add("There's no cards in this pile");
         for(int i = 0; i < mainDeck.size();i++)
         {
             if(i % 2 == 0)
@@ -83,30 +85,42 @@ public class Spit extends Main
             }
         }
         //This took quite a bit of time to finalize
-        playerOne.add(playerDeck.remove(0));
-        oppsOne.add(oppsDeck.remove(0));
+        playerOne.add("There's no cards in this pile");
+        oppsOne.add("There's no cards in this pile");
+        playerTwo.add("There's no cards in this pile");
+        oppsTwo.add("There's no cards in this pile");
+        playerThree.add("There's no cards in this pile");
+        oppsThree.add("There's no cards in this pile");
+        playerFour.add("There's no cards in this pile");
+        oppsFour.add("There's no cards in this pile");
+        playerFive.add("There's no cards in this pile");
+        oppsFive.add("There's no cards in this pile");
+        playerPile.add("There's no cards in this pile");
+        oppsPile.add("There's no cards in this pile");
+        playerOne.add(playerDeck.remove(1));
+        oppsOne.add(oppsDeck.remove(1));
         for(int i = 0; i < 2; i++)
         {
-            playerTwo.add(playerDeck.remove(0));
-            oppsTwo.add(oppsDeck.remove(0));
+            playerTwo.add(playerDeck.remove(1));
+            oppsTwo.add(oppsDeck.remove(1));
         }
         for(int i = 0; i < 3; i++)
         {
-            playerThree.add(playerDeck.remove(0));
-            oppsThree.add(oppsDeck.remove(0));
+            playerThree.add(playerDeck.remove(1));
+            oppsThree.add(oppsDeck.remove(1));
         }
         for(int i = 0; i < 4; i++)
         {
-            playerFour.add(playerDeck.remove(0));
-            oppsFour.add(oppsDeck.remove(0));
+            playerFour.add(playerDeck.remove(1));
+            oppsFour.add(oppsDeck.remove(1));
         }
         for(int i = 0; i < 5; i++)
         {
-            playerFive.add(playerDeck.remove(0));
-            oppsFive.add(oppsDeck.remove(0));
+            playerFive.add(playerDeck.remove(1));
+            oppsFive.add(oppsDeck.remove(1));
         }
-        playerPile.add(playerDeck.remove(0));
-        oppsPile.add(oppsDeck.remove(0));
+        playerPile.add(playerDeck.remove(1));
+        oppsPile.add(oppsDeck.remove(1));
         System.out.println("Your cards are as follows:\n" + "Pile 1: "+ playerOne.get(playerOne.size()-1)+"\nPile 2: " + playerTwo.get(playerTwo.size()-1) + "\nPile 3: " + playerThree.get(playerThree.size()-1)+ "\nPile 4: " + playerFour.get(playerFour.size()-1)+ "\nPile 5: " + playerFive.get(playerFive.size()-1) + "\nYour current hand: " + playerDeck.get(playerDeck.size()-1));
         System.out.println("Your center pile has been set with the " + playerPile.get(playerPile.size()-1) + " and your opponents pile has been set with the " + oppsPile.get(oppsPile.size()-1));
     }
@@ -163,7 +177,8 @@ public class Spit extends Main
             if(checkCard(playerPile, choice))
             {
                 playerPile.add(playerDeck.remove(playerDeck.size()-1));
-            }else if(checkCard(oppsPile, choice))
+            }
+            else if(checkCard(oppsPile, choice))
             {
                 oppsPile.add(playerDeck.remove(playerDeck.size()-1));
             }
@@ -220,36 +235,50 @@ public class Spit extends Main
     //specifically for the computer, not to be shown to player
     private void oppsPlayCard()
     {
-        if(oppsOne.size() != 0)
+        if(oppsOne.size() != 1)
         {
             if(checkCard(oppsPile, oppsOne.get(0)))
             {
-                 oppsPile.add(oppsOne.remove(oppsOne.size()-1));
+                oppsPile.add(oppsOne.remove(oppsOne.size()-1));
             }
-        }else if(checkCard(oppsPile, oppsTwo.get(oppsTwo.size()-1)))
+        }else if(oppsTwo.size() != 1){
+            if(checkCard(oppsPile, oppsTwo.get(oppsTwo.size()-1)))
+            {
+                oppsPile.add(oppsTwo.remove(oppsTwo.size()-1));
+            }
+        }else if(oppsThree.size() != 1)
         {
-            oppsPile.add(oppsTwo.remove(oppsTwo.size()-1));
-        }else if(checkCard(oppsPile, oppsThree.get(oppsThree.size()-1)))
+            if(checkCard(oppsPile, oppsThree.get(oppsThree.size()-1)))
+            {
+                oppsPile.add(oppsThree.remove(oppsThree.size()-1));
+            }
+        }else if(oppsFour.size() != 1)
         {
-            oppsPile.add(oppsThree.remove(oppsThree.size()-1));
-        }else if(checkCard(oppsPile, oppsFour.get(oppsFour.size()-1)))
+            if(checkCard(oppsPile, oppsFour.get(oppsFour.size()-1)))
+            {
+                oppsPile.add(oppsFour.remove(oppsFour.size()-1));
+            }
+        }else if(oppsFive.size() != 1)
         {
-            oppsPile.add(oppsFour.remove(oppsFour.size()-1));
-        }else if(checkCard(oppsPile, oppsFive.get(oppsFive.size()-1)))
+            if(checkCard(oppsPile, oppsFive.get(oppsFive.size()-1)))
+            {
+                oppsPile.add(playerFive.remove(oppsFive.size()-1));
+            }
+        }else if(oppsPile.size() != 1)
         {
-            oppsPile.add(playerFive.remove(oppsFive.size()-1));
-        }else if(checkCard(oppsPile, oppsDeck.get(oppsDeck.size()-1)))
-        {
+            if(checkCard(oppsPile, oppsDeck.get(oppsDeck.size()-1)))
+            {
                 oppsPile.add(oppsDeck.remove(oppsDeck.size()-1));
+            }
         }
     }
 
     public void winCheck()
     {
-        if(playerCards == 0)
+        if(playerCards == 6)
         {
             playerWin = true;
-        }else if(oppsCards == 0)
+        }else if(oppsCards == 6)
         {
             oppsWin = true;
         }
@@ -308,54 +337,54 @@ public class Spit extends Main
                 oppsDeck.add(playerPile.remove(0));
             }
         }
-        if(playerOne.get(0) != null)
+        if(playerOne.get(0) != "There's no cards in this pile")
         {
             playerDeck.add(playerOne.remove(0));
         }
-        if(oppsOne.get(0) != null)
+        if(oppsOne.get(0) != "There's no cards in this pile")
         {
             oppsDeck.add(oppsOne.remove(0));
         }
         for(int i = 0; i < 2; i++)
         {
-            if(playerTwo.get(0) != null)
+            if(playerTwo.get(0) != "There's no cards in this pile")
             {
                 playerDeck.add(playerTwo.remove(0));
             }
-            if(oppsTwo.get(0) != null)
+            if(oppsTwo.get(0) != "There's no cards in this pile")
             {
                 oppsDeck.add(oppsTwo.remove(0));
             }
         }
         for(int i = 0; i < 3; i++)
         {
-            if(playerThree.get(0) != null)
+            if(playerThree.get(0) != "There's no cards in this pile")
             {
                 playerDeck.add(playerThree.remove(0));
             }
-            if(oppsThree.get(0) != null)
+            if(oppsThree.get(0) != "There's no cards in this pile")
             {
                 oppsDeck.add(oppsThree.remove(0));
             }
         }
         for(int i = 0; i < 4; i++)
         {
-            if(playerFour.get(0) != null)
+            if(playerFour.get(0) != "There's no cards in this pile")
             {
                 playerDeck.add(playerFour.remove(0));
             }
-            if(oppsFour.get(0) != null)
+            if(oppsFour.get(0) != "There's no cards in this pile")
             {
                 oppsDeck.add(oppsFour.remove(0));
             }
         }
         for(int i = 0; i < 5; i++)
         {
-            if(playerFive.get(0) != null)
+            if(playerFive.get(0) != "There's no cards in this pile")
             {
                 playerDeck.add(playerFive.remove(0));
             }
-            if(oppsFive.get(0) != null)
+            if(oppsFive.get(0) != "There's no cards in this pile")
             {
                 oppsDeck.add(oppsFive.remove(0));
             }
@@ -396,54 +425,54 @@ public class Spit extends Main
         {
             if(i <=1)
             {
-                if(playerDeck.get(0) != null)
+                if(playerDeck.get(0) != "There's no cards in this pile")
                 {
                     playerTwo.add(playerDeck.remove(playerDeck.size()-1));
                 }
-                if(oppsDeck.get(0) != null)
+                if(oppsDeck.get(0) != "There's no cards in this pile")
                 {
                     oppsTwo.add(oppsDeck.remove(oppsDeck.size()-1));
                 }
             }
             if(i <= 2)
             {
-                if(playerDeck.get(0) != null)
+                if(playerDeck.get(0) != "There's no cards in this pile")
                 {
                     playerThree.add(playerDeck.remove(playerDeck.size()-1));
                 }
-                if(oppsDeck.get(0) != null)
+                if(oppsDeck.get(0) != "There's no cards in this pile")
                 {
                     oppsThree.add(oppsDeck.remove(oppsDeck.size()-1));
                 }
             }
             if(i <= 3)
             {
-                if(playerDeck.get(0) != null)
+                if(playerDeck.get(0) != "There's no cards in this pile")
                 {
                     playerFour.add(playerDeck.remove(playerDeck.size()-1));
                 }
-                if(oppsDeck.get(0) != null)
+                if(oppsDeck.get(0) != "There's no cards in this pile")
                 {
                     oppsFour.add(oppsDeck.remove(oppsDeck.size()-1));
                 }
             }
             if(i <= 4)
             {
-                if(playerDeck.get(0) != null)
+                if(playerDeck.get(0) != "There's no cards in this pile")
                 {
                     playerFive.add(playerDeck.remove(playerDeck.size()-1));
                 }
-                if(oppsDeck.get(0) != null)
+                if(oppsDeck.get(0) != "There's no cards in this pile")
                 {
                     oppsFive.add(oppsDeck.remove(oppsDeck.size()-1));
                 }
             }
         }
-        if(playerDeck.get(0) != null)
+        if(playerDeck.get(0) != "There's no cards in this pile")
         {
             playerPile.add(playerDeck.remove(playerDeck.size()-1));        
         }
-        if(oppsDeck.get(0) != null)
+        if(oppsDeck.get(0) != "There's no cards in this pile")
         {
             oppsPile.add(oppsDeck.remove(oppsDeck.size()-1));
         }
