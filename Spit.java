@@ -50,12 +50,12 @@ public class Spit extends Main
                 String choice = scan.nextLine().trim();
                 playCard(choice);
                 oppsPlayCard();
-                winCheck();
-                //To display the decks to the player after cards have been played
-                System.out.println("Your cards are as follows:\n" + "Pile 1: "+ playerOne.get(0)+"\nPile 2: " + playerTwo.get(0) + "\nPile 3: " + playerThree.get(0)+ "\nPile 4: " + playerFour.get(0)+ "\nPile 5: " + playerFive.get(0) + "\nYour current hand: " + playerDeck.get(0));
-                System.out.println("Your center pile has the " + playerPile.get(0) + " and your opponents pile has the " + oppsPile.get(0));
                 playerCards = calculatePlayerCards();
                 oppsCards = calculateOppsCards();
+                winCheck();
+                //To display the decks to the player after cards have been played
+                System.out.println("Your cards are as follows:\n" + "Pile 1: "+ playerOne.get(playerOne.size()-1)+"\nPile 2: " + playerTwo.get(playerTwo.size()-1) + "\nPile 3: " + playerThree.get(playerThree.size()-1)+ "\nPile 4: " + playerFour.get(playerFour.size()-1)+ "\nPile 5: " + playerFive.get(playerFive.size()-1) + "\nYour current hand: " + playerDeck.get(playerDeck.size()-1));
+                System.out.println("Your center pile has the " + playerPile.get(playerPile.size()-1) + " and your opponents pile has the " + oppsPile.get(oppsPile.size()-1));
                 if(playerCards == playerDeck.size() || oppsCards == oppsDeck.size())
                 {
                     pileSlap();
@@ -107,47 +107,65 @@ public class Spit extends Main
         }
         playerPile.add(playerDeck.remove(0));
         oppsPile.add(oppsDeck.remove(0));
-        System.out.println("Your cards are as follows:\n" + "Pile 1: "+ playerOne.get(0)+"\nPile 2: " + playerTwo.get(0) + "\nPile 3: " + playerThree.get(0)+ "\nPile 4: " + playerFour.get(0)+ "\nPile 5: " + playerFive.get(0) + "\nYour current hand: " + playerDeck.get(0));
-        System.out.println("Your center pile has been set with the " + playerPile.get(0) + " and your opponents pile has been set with " + oppsPile.get(0));
+        System.out.println("Your cards are as follows:\n" + "Pile 1: "+ playerOne.get(playerOne.size()-1)+"\nPile 2: " + playerTwo.get(playerTwo.size()-1) + "\nPile 3: " + playerThree.get(playerThree.size()-1)+ "\nPile 4: " + playerFour.get(playerFour.size()-1)+ "\nPile 5: " + playerFive.get(playerFive.size()-1) + "\nYour current hand: " + playerDeck.get(playerDeck.size()-1));
+        System.out.println("Your center pile has been set with the " + playerPile.get(playerPile.size()-1) + " and your opponents pile has been set with the " + oppsPile.get(oppsPile.size()-1));
     }
 
     public void playCard(String choice)
     {
-        if(choice.equals(playerOne.get(0)))
+        if(choice.equals(playerOne.get(playerOne.size()-1)))
         {
             if(checkCard(playerPile, choice))
             {
-                playerPile.add(playerOne.remove(0));
+                playerPile.add(playerOne.remove(playerOne.size()-1));
+            }else if(checkCard(oppsPile, choice))
+            {
+                oppsPile.add(playerOne.remove(playerOne.size()-1));
             }
-        }else if(choice.equals(playerTwo.get(0)))
+        }else if(choice.equals(playerTwo.get(playerTwo.size()-1)))
         {
             if(checkCard(playerPile, choice))
             {
-                playerPile.add(playerTwo.remove(0));
+                playerPile.add(playerTwo.remove(playerTwo.size()-1));
+            }else if(checkCard(oppsPile, choice))
+            {
+                oppsPile.add(playerTwo.remove(playerTwo.size()-1));
             }
-        }else if(choice.equals(playerThree.get(0)))
+        }else if(choice.equals(playerThree.get(playerThree.size()-1)))
         {
             if(checkCard(playerPile, choice))
             {
-                playerPile.add(playerThree.remove(0));
+                playerPile.add(playerThree.remove(playerThree.size()-1));
+            }else if(checkCard(oppsPile, choice))
+            {
+                oppsPile.add(playerThree.remove(playerThree.size()-1));
             }
-        }else if(choice.equals(playerFour.get(0)))
+        }else if(choice.equals(playerFour.get(playerFour.size()-1)))
         {
             if(checkCard(playerPile, choice))
             {
-                playerPile.add(playerFour.remove(0));
+                playerPile.add(playerFour.remove(playerFour.size()-1));
+            }else if(checkCard(oppsPile, choice))
+            {
+                oppsPile.add(playerFour.remove(playerFour.size()-1));
             }
-        }else if(choice.equals(playerFive.get(0)))
+        }else if(choice.equals(playerFive.get(playerFive.size()-1)))
         {
             if(checkCard(playerPile, choice))
             {
-                playerPile.add(playerFive.remove(0));
+                playerPile.add(playerFive.remove(playerFive.size()-1));
+            }else if(checkCard(oppsPile, choice))
+            {
+                oppsPile.add(playerFive.remove(playerFive.size()-1));
             }
-        }else if(choice.equals(playerDeck.get(0)))
+        }else if(choice.equals(playerDeck.get(playerDeck.size()-1)))
         {
             if(checkCard(playerPile, choice))
             {
-                playerPile.add(playerDeck.remove(0));
+                playerPile.add(playerDeck.remove(playerDeck.size()-1));
+            }else if(checkCard(oppsPile, choice))
+            {
+                oppsPile.add(playerDeck.remove(playerDeck.size()-1));
             }
         }else{
             System.out.println("Can't play that!, try another.");
@@ -161,20 +179,20 @@ public class Spit extends Main
     {
         int refer = 0;
         int temp = 0;
-        if(deck.get(0).substring(0, 1).equals("Ace"))
+        if(deck.get(deck.size()-1).substring(0, 1).equals("Ace"))
         {
             refer = 1;
-        }else if(deck.get(0).substring(0, 1).equals("J"))
+        }else if(deck.get(deck.size()-1).substring(0, 1).equals("J"))
         {
             refer = 11;
-        }else if(deck.get(0).substring(0, 1).equals("Q"))
+        }else if(deck.get(deck.size()-1).substring(0, 1).equals("Q"))
         {
             refer = 12;
-        }else if(deck.get(0).substring(0, 1).equals("K"))
+        }else if(deck.get(deck.size()-1).substring(0, 1).equals("K"))
         {
             refer = 13;
         }else{
-            refer = Integer.parseInt(deck.get(0).substring(0, 1));
+            refer = Integer.valueOf(deck.get(deck.size()-1).substring(0, 1));
         }
         if(card.substring(0, 1).equals("Ace"))
         {
@@ -189,7 +207,7 @@ public class Spit extends Main
         {
             temp = 13;
         }else{
-            temp = Integer.parseInt(card.substring(0, 1));
+            temp = Integer.valueOf(card.substring(0,1));
         }
         if(Math.abs(refer-temp)<= 1 || Math.abs(refer-temp)== 12 )
         {
@@ -202,24 +220,27 @@ public class Spit extends Main
     //specifically for the computer, not to be shown to player
     private void oppsPlayCard()
     {
-        if(checkCard(oppsPile, oppsOne.get(0)))
+        if(oppsOne.size() != 0)
         {
-            oppsPile.add(oppsOne.remove(0));
-        }else if(checkCard(oppsPile, oppsTwo.get(0)))
+            if(checkCard(oppsPile, oppsOne.get(0)))
+            {
+                 oppsPile.add(oppsOne.remove(oppsOne.size()-1));
+            }
+        }else if(checkCard(oppsPile, oppsTwo.get(oppsTwo.size()-1)))
         {
-            oppsPile.add(oppsTwo.remove(0));
-        }else if(checkCard(oppsPile, oppsThree.get(0)))
+            oppsPile.add(oppsTwo.remove(oppsTwo.size()-1));
+        }else if(checkCard(oppsPile, oppsThree.get(oppsThree.size()-1)))
         {
-            oppsPile.add(oppsThree.remove(0));
-        }else if(checkCard(oppsPile, oppsFour.get(0)))
+            oppsPile.add(oppsThree.remove(oppsThree.size()-1));
+        }else if(checkCard(oppsPile, oppsFour.get(oppsFour.size()-1)))
         {
-            oppsPile.add(oppsFour.remove(0));
-        }else if(checkCard(oppsPile, oppsFive.get(0)))
+            oppsPile.add(oppsFour.remove(oppsFour.size()-1));
+        }else if(checkCard(oppsPile, oppsFive.get(oppsFive.size()-1)))
         {
-            oppsPile.add(playerFive.remove(0));
-        }else if(checkCard(oppsPile, oppsDeck.get(0)))
+            oppsPile.add(playerFive.remove(oppsFive.size()-1));
+        }else if(checkCard(oppsPile, oppsDeck.get(oppsDeck.size()-1)))
         {
-                oppsPile.add(oppsDeck.remove(0));
+                oppsPile.add(oppsDeck.remove(oppsDeck.size()-1));
         }
     }
 
@@ -257,7 +278,7 @@ public class Spit extends Main
             }
             System.out.println("Too late, your opponent has already claimed Pile " +  desiredPile + ". You get pile " + otherPile);
         }else{
-            desiredPile = Integer.parseInt(choice);
+            desiredPile = Integer.valueOf(choice);
             otherPile = 3 - desiredPile;
         }
 
@@ -369,61 +390,62 @@ public class Spit extends Main
     {
         shuffleDeck(playerDeck);
         shuffleDeck(oppsDeck);
-        playerOne.add(playerDeck.remove(0));
-        oppsOne.add(oppsDeck.remove(0));
+        playerOne.add(playerDeck.remove(playerDeck.size()-1));
+        oppsOne.add(oppsDeck.remove(oppsDeck.size()-1));
         for(int i = 0; i < 5; i++)
         {
             if(i <=1)
             {
                 if(playerDeck.get(0) != null)
                 {
-                    playerTwo.add(playerDeck.remove(0));
+                    playerTwo.add(playerDeck.remove(playerDeck.size()-1));
                 }
                 if(oppsDeck.get(0) != null)
                 {
-                    oppsTwo.add(oppsDeck.remove(0));
+                    oppsTwo.add(oppsDeck.remove(oppsDeck.size()-1));
                 }
             }
             if(i <= 2)
             {
                 if(playerDeck.get(0) != null)
                 {
-                    playerThree.add(playerDeck.remove(0));
+                    playerThree.add(playerDeck.remove(playerDeck.size()-1));
                 }
                 if(oppsDeck.get(0) != null)
                 {
-                    oppsThree.add(oppsDeck.remove(0));
+                    oppsThree.add(oppsDeck.remove(oppsDeck.size()-1));
                 }
             }
             if(i <= 3)
             {
                 if(playerDeck.get(0) != null)
                 {
-                    playerFour.add(playerDeck.remove(0));
+                    playerFour.add(playerDeck.remove(playerDeck.size()-1));
                 }
                 if(oppsDeck.get(0) != null)
                 {
-                    oppsFour.add(oppsDeck.remove(0));
+                    oppsFour.add(oppsDeck.remove(oppsDeck.size()-1));
                 }
             }
             if(i <= 4)
             {
                 if(playerDeck.get(0) != null)
                 {
-                    playerFive.add(playerDeck.remove(0));
+                    playerFive.add(playerDeck.remove(playerDeck.size()-1));
                 }
                 if(oppsDeck.get(0) != null)
                 {
-                    oppsFive.add(oppsDeck.remove(0));
+                    oppsFive.add(oppsDeck.remove(oppsDeck.size()-1));
                 }
             }
         }
         if(playerDeck.get(0) != null)
         {
-            playerPile.add(playerDeck.remove(0));        }
+            playerPile.add(playerDeck.remove(playerDeck.size()-1));        
+        }
         if(oppsDeck.get(0) != null)
         {
-            oppsPile.add(oppsDeck.remove(0));
+            oppsPile.add(oppsDeck.remove(oppsDeck.size()-1));
         }
     }
 }
