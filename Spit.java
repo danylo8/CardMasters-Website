@@ -47,8 +47,9 @@ public class Spit extends Main
                 }
             }else{
                 System.out.println("\nWhat card would you like to play? (Type the card's full name)");
+                System.out.println("If you wish to look for another card in your main deck to play, type in Other Card");
                 String choice = scan.nextLine().trim();
-                System.out.println("What pile would you like to play the card in? (Type the corresponding number to the pile of your choice:\nPile One = 1, Pile Two = 2, Pile Three = 3, Pile Four = 4, Pile Five = 5, and your center pile = 6)");
+                System.out.println("What pile would you like to play the card in? (Type the corresponding number to the pile of your choice:\nPile One = 1, Pile Two = 2, Pile Three = 3, Pile Four = 4, Pile Five = 5, your center pile = 6, and the 2nd center pile = 7)");
                 String pileChoice = scan.nextLine().trim();
                 playCard(choice, pileChoice);
                 oppsPlayCard();
@@ -129,58 +130,135 @@ public class Spit extends Main
 
     public void playCard(String choice, String pile)
     {
-        if(choice.equals(playerOne.get(playerOne.size()-1)))
+        if(choice.equals("Other Card"))
         {
-            if(checkCard(playerPile, choice))
+
+        }else if(choice.equals(playerOne.get(playerOne.size()-1)))
+        {
+            if(pile.equals("2") && checkCard(playerTwo, choice))
             {
                 playerPile.add(playerOne.remove(playerOne.size()-1));
-            }else if(checkCard(oppsPile, choice))
+            }else if(pile.equals("3") && checkCard(playerThree, choice))
+            {
+                playerThree.add(playerOne.remove(playerOne.size()-1));
+            }else if(pile.equals("4") && checkCard(playerFour, choice))
+            {
+                playerFour.add(playerOne.remove(playerOne.size()-1));
+            }else if(pile.equals("5") && checkCard(playerFive, choice))
+            {
+                playerFive.add(playerOne.remove(playerOne.size()-1));
+            }else if(pile.equals("6") && checkCard(playerPile, choice))
+            {
+                playerPile.add(playerOne.remove(playerOne.size()-1));
+            }else if(pile.equals("7") && checkCard(oppsPile, choice))
             {
                 oppsPile.add(playerOne.remove(playerOne.size()-1));
             }
         }else if(choice.equals(playerTwo.get(playerTwo.size()-1)))
         {
-            if(checkCard(playerPile, choice))
+            if(pile.equals("1") && checkCard(playerOne, choice))
+            {
+                playerOne.add(playerTwo.remove(playerTwo.size()-1));
+            }else if(pile.equals("3") && checkCard(playerThree, choice))
+            {
+                playerThree.add(playerTwo.remove(playerTwo.size()-1));
+            }else if(pile.equals("4") && checkCard(playerFour, choice))
+            {
+                playerFour.add(playerTwo.remove(playerTwo.size()-1));
+            }else if(pile.equals("5") && checkCard(playerFive, choice))
+            {
+                playerFive.add(playerTwo.remove(playerTwo.size()-1));
+            }else if(pile.equals("6") && checkCard(playerPile, choice))
             {
                 playerPile.add(playerTwo.remove(playerTwo.size()-1));
-            }else if(checkCard(oppsPile, choice))
+            }else if(pile.equals("7") && checkCard(oppsPile, choice))
             {
                 oppsPile.add(playerTwo.remove(playerTwo.size()-1));
             }
         }else if(choice.equals(playerThree.get(playerThree.size()-1)))
         {
-            if(checkCard(playerPile, choice))
+            if(pile.equals("1") && checkCard(playerOne, choice))
+            {
+                playerOne.add(playerThree.remove(playerThree.size()-1));
+            }else if(pile.equals("2") && checkCard(playerTwo, choice))
+            {
+                playerTwo.add(playerThree.remove(playerThree.size()-1));
+            }else if(pile.equals("4") && checkCard(playerFour, choice))
+            {
+                playerFour.add(playerThree.remove(playerThree.size()-1));
+            }else if(pile.equals("5") && checkCard(playerFive, choice))
+            {
+                playerFive.add(playerThree.remove(playerThree.size()-1));
+            }else if(pile.equals("6") && checkCard(playerPile, choice))
             {
                 playerPile.add(playerThree.remove(playerThree.size()-1));
-            }else if(checkCard(oppsPile, choice))
+            }else if(pile.equals("7") && checkCard(oppsPile, choice))
             {
                 oppsPile.add(playerThree.remove(playerThree.size()-1));
             }
         }else if(choice.equals(playerFour.get(playerFour.size()-1)))
         {
-            if(checkCard(playerPile, choice))
+            if(pile.equals("1") && checkCard(playerOne, choice))
+            {
+                playerOne.add(playerFour.remove(playerFour.size()-1));
+            }else if(pile.equals("2") && checkCard(playerTwo, choice))
+            {
+                playerTwo.add(playerFour.remove(playerFour.size()-1));
+            }else if(pile.equals("3") && checkCard(playerThree, choice))
+            {
+                playerThree.add(playerFour.remove(playerFour.size()-1));
+            }else if(pile.equals("5") && checkCard(playerFive, choice))
+            {
+                playerFive.add(playerFour.remove(playerFour.size()-1));
+            }else if(pile.equals("6") && checkCard(playerPile, choice))
             {
                 playerPile.add(playerFour.remove(playerFour.size()-1));
-            }else if(checkCard(oppsPile, choice))
+            }else if(pile.equals("7") && checkCard(oppsPile, choice))
             {
                 oppsPile.add(playerFour.remove(playerFour.size()-1));
             }
         }else if(choice.equals(playerFive.get(playerFive.size()-1)))
         {
-            if(checkCard(playerPile, choice))
+            if(pile.equals("1") && checkCard(playerOne, choice))
             {
-                playerPile.add(playerFive.remove(playerFive.size()-1));
-            }else if(checkCard(oppsPile, choice))
+                playerOne.add(playerFive.remove(playerFive.size()-1));
+            }else if(pile.equals("2") && checkCard(playerTwo, choice))
             {
-                oppsPile.add(playerFive.remove(playerFive.size()-1));
+                playerTwo.add(playerFive.remove(playerFive.size()-1));
+            }else if(pile.equals("3") && checkCard(playerThree, choice))
+            {
+                playerThree.add(playerFive.remove(playerFive.size()-1));
+            }else if(pile.equals("4") && checkCard(playerFour, choice))
+            {
+                playerFour.add(playerFive.remove(playerFive.size()-1));
+            }else if(pile.equals("6") && checkCard(playerPile, choice))
+            {
+                playerPile.add(playerThree.remove(playerThree.size()-1));
+            }else if(pile.equals("7") && checkCard(oppsPile, choice))
+            {
+                oppsPile.add(playerThree.remove(playerThree.size()-1));
             }
         }else if(choice.equals(playerDeck.get(playerDeck.size()-1)))
         {
-            if(checkCard(playerPile, choice))
+            if(pile.equals("1") && checkCard(playerOne, choice))
+            {
+                playerOne.add(playerDeck.remove(playerDeck.size()-1));
+            }else if(pile.equals("2") && checkCard(playerTwo, choice))
+            {
+                playerTwo.add(playerDeck.remove(playerDeck.size()-1));
+            }else if(pile.equals("3") && checkCard(playerThree, choice))
+            {
+                playerThree.add(playerDeck.remove(playerDeck.size()-1));
+            }else if(pile.equals("4") && checkCard(playerFour, choice))
+            {
+                playerFour.add(playerDeck.remove(playerDeck.size()-1));
+            }else if(pile.equals("5") && checkCard(playerFive, choice))
+            {
+                playerFive.add(playerDeck.remove(playerDeck.size()-1));
+            }else if(pile.equals("6") && checkCard(playerPile, choice))
             {
                 playerPile.add(playerDeck.remove(playerDeck.size()-1));
-            }
-            else if(checkCard(oppsPile, choice))
+            }else if(pile.equals("7") && checkCard(oppsPile, choice))
             {
                 oppsPile.add(playerDeck.remove(playerDeck.size()-1));
             }
