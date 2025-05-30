@@ -46,9 +46,11 @@ public class Spit extends Main
                     System.out.println("Sorry, but it looks like your opponent won the game, better luck next time!");
                 }
             }else{
-                System.out.println("\nWhat card would you like to play in your pile? (Type the card's full name)");
+                System.out.println("\nWhat card would you like to play? (Type the card's full name)");
                 String choice = scan.nextLine().trim();
-                playCard(choice);
+                System.out.println("What pile would you like to play the card in? (Type the corresponding number to the pile of your choice:\nPile One = 1, Pile Two = 2, Pile Three = 3, Pile Four = 4, Pile Five = 5, and your center pile = 6)");
+                String pileChoice = scan.nextLine().trim();
+                playCard(choice, pileChoice);
                 oppsPlayCard();
                 playerCards = calculatePlayerCards();
                 oppsCards = calculateOppsCards();
@@ -125,7 +127,7 @@ public class Spit extends Main
         System.out.println("Your center pile has been set with the " + playerPile.get(playerPile.size()-1) + " and your opponents pile has been set with the " + oppsPile.get(oppsPile.size()-1));
     }
 
-    public void playCard(String choice)
+    public void playCard(String choice, String pile)
     {
         if(choice.equals(playerOne.get(playerOne.size()-1)))
         {
@@ -185,7 +187,10 @@ public class Spit extends Main
         }else{
             System.out.println("Can't play that!, try another.");
             String choice2 = scan.nextLine().trim();
-            playCard(choice2);
+            System.out.println("What pile would you like to play the card in? (Type the corresponding number to the pile of your choice:\nPile One = 1, Pile Two = 2, Pile Three = 3, Pile Four = 4, Pile Five = 5, and your center pile = 6)");
+            String pileChoice2 = scan.nextLine().trim();
+            
+            playCard(choice2, pileChoice2);
         }
     }
 
@@ -197,6 +202,33 @@ public class Spit extends Main
         if(deck.get(deck.size()-1).substring(0, 1).equals("Ace"))
         {
             refer = 1;
+        }else if(deck.get(deck.size()-1).substring(0, 1).equals("2"))
+        {
+            refer = 2;
+        }else if(deck.get(deck.size()-1).substring(0, 1).equals("3"))
+        {
+            refer = 3;
+        }else if(deck.get(deck.size()-1).substring(0, 1).equals("4"))
+        {
+            refer = 4;
+        }else if(deck.get(deck.size()-1).substring(0, 1).equals("5"))
+        {
+            refer = 5;
+        }else if(deck.get(deck.size()-1).substring(0, 1).equals("6"))
+        {
+            refer = 6;
+        }else if(deck.get(deck.size()-1).substring(0, 1).equals("7"))
+        {
+            refer = 7;
+        }else if(deck.get(deck.size()-1).substring(0, 1).equals("8"))
+        {
+            refer = 8;
+        }else if(deck.get(deck.size()-1).substring(0, 1).equals("9"))
+        {
+            refer = 9;
+        }else if(deck.get(deck.size()-1).substring(0, 1).equals("10"))
+        {
+            refer = 10;
         }else if(deck.get(deck.size()-1).substring(0, 1).equals("J"))
         {
             refer = 11;
@@ -206,12 +238,37 @@ public class Spit extends Main
         }else if(deck.get(deck.size()-1).substring(0, 1).equals("K"))
         {
             refer = 13;
-        }else{
-            refer = Integer.valueOf(deck.get(deck.size()-1).substring(0, 1));
         }
         if(card.substring(0, 1).equals("Ace"))
         {
             temp = 1;
+        }else if(card.substring(0, 1).equals("2"))
+        {
+            temp = 2;
+        }else if(card.substring(0, 1).equals("3"))
+        {
+            temp = 3;
+        }else if(card.substring(0, 1).equals("4"))
+        {
+            temp = 4;
+        }else if(card.substring(0, 1).equals("5"))
+        {
+            temp = 5;
+        }else if(card.substring(0, 1).equals("6"))
+        {
+            temp = 6;
+        }else if(card.substring(0, 1).equals("7"))
+        {
+            temp = 7;
+        }else if(card.substring(0, 1).equals("8"))
+        {
+            temp = 8;
+        }else if(card.substring(0, 1).equals("9"))
+        {
+            temp = 9;
+        }else if(card.substring(0, 1).equals("10"))
+        {
+            temp = 10;
         }else if(card.substring(0, 1).equals("J"))
         {
             temp = 11;
@@ -221,10 +278,8 @@ public class Spit extends Main
         }else if(card.substring(0, 1).equals("K"))
         {
             temp = 13;
-        }else{
-            temp = Integer.valueOf(card.substring(0,1));
         }
-        if(Math.abs(refer-temp)<= 1 || Math.abs(refer-temp)== 12 )
+        if(Math.abs(refer-temp) <= 1 || Math.abs(refer-temp) >= 12)
         {
             return true;
         }else{
@@ -240,35 +295,53 @@ public class Spit extends Main
             if(checkCard(oppsPile, oppsOne.get(0)))
             {
                 oppsPile.add(oppsOne.remove(oppsOne.size()-1));
+            }else if(checkCard(playerPile, oppsOne.get(0)))
+            {
+                playerPile.add(oppsOne.remove(oppsOne.size()-1));
             }
         }else if(oppsTwo.size() != 1){
             if(checkCard(oppsPile, oppsTwo.get(oppsTwo.size()-1)))
             {
                 oppsPile.add(oppsTwo.remove(oppsTwo.size()-1));
+            }else if(checkCard(playerPile, oppsTwo.get(oppsTwo.size()-1)))
+            {
+                playerPile.add(oppsTwo.remove(oppsTwo.size()-1));
             }
         }else if(oppsThree.size() != 1)
         {
             if(checkCard(oppsPile, oppsThree.get(oppsThree.size()-1)))
             {
                 oppsPile.add(oppsThree.remove(oppsThree.size()-1));
+            }else if(checkCard(playerPile, oppsThree.get(oppsThree.size()-1)))
+            {
+                playerPile.add(oppsThree.remove(oppsThree.size()-1));
             }
         }else if(oppsFour.size() != 1)
         {
             if(checkCard(oppsPile, oppsFour.get(oppsFour.size()-1)))
             {
                 oppsPile.add(oppsFour.remove(oppsFour.size()-1));
+            }else if(checkCard(playerPile, oppsFour.get(oppsFour.size()-1)))
+            {
+                playerPile.add(oppsFour.remove(oppsFour.size()-1));
             }
         }else if(oppsFive.size() != 1)
         {
             if(checkCard(oppsPile, oppsFive.get(oppsFive.size()-1)))
             {
                 oppsPile.add(playerFive.remove(oppsFive.size()-1));
+            }else if(checkCard(playerPile, oppsFive.get(oppsFive.size()-1)))
+            {
+                playerPile.add(oppsFive.remove(oppsFive.size()-1));
             }
         }else if(oppsPile.size() != 1)
         {
             if(checkCard(oppsPile, oppsDeck.get(oppsDeck.size()-1)))
             {
                 oppsPile.add(oppsDeck.remove(oppsDeck.size()-1));
+            }else if(checkCard(playerPile, oppsDeck.get(oppsDeck.size()-1)))
+            {
+                playerPile.add(oppsDeck.remove(oppsDeck.size()-1));
             }
         }
     }
@@ -477,4 +550,6 @@ public class Spit extends Main
             oppsPile.add(oppsDeck.remove(oppsDeck.size()-1));
         }
     }
+
+    
 }
