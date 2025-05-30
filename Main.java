@@ -13,22 +13,16 @@ public class Main
     {
         System.out.println("What card game would you like to play?");
         String choice = scan.nextLine().trim();
-        if(choice.equals("cuarenta"))
+        if(choice.equals("Cuarenta"))
         {
             Cuarenta game = new Cuarenta();
         }
-    }
 
-    //Try to figure out a way to fix the code
-   //public static void shuffleDeck(ArrayList<String> deck)
-    {
-        //String temp = "";
-        //for(int i = 0; i < deck.length; i++)
+        if(choice.equal("BS"))
         {
-            //temp = deck[i];
-            //deck[i] = deck[Math.random()*deck.length];
-            //deck[Math.random()*deck.length] = temp;
-            //Collections.shuffle(deck);
+            BS game= new BS();
         }
     }
+
+
 }
