@@ -29,7 +29,7 @@ public class Spit extends Main
     public Spit()
     {
         //intro
-        System.out.println("Welcome to Spit! If you need to learn the rules, you may read them at the bottom of the page\n");
+        System.out.println("Welcome to Spit! If you need to learn the rules, you may take a moment to do so\n");
         intitalizeSpit();
         gameActive = true;
         //play loop
@@ -134,6 +134,7 @@ public class Spit extends Main
     {
         if(answer.equals("Other Card"))
         {
+            oppsPlayCard();
             String og = playerDeck.get(playerDeck.size()-1);
             int chance = (int)(Math.random() * playerDeck.size()-1);
             String temp = playerDeck.get(chance);
@@ -147,7 +148,7 @@ public class Spit extends Main
             playCard(choice2);
             oppsPlayCard();
         }else if(answer.equals("Skip")){
-            System.out.println("\nWhat card would you like to play? (Type the card's full name)");
+            System.out.println("\nWhat card would you like to play? (Type the card's full name)\n");
             choice = scan.nextLine().trim();
         }
     }
@@ -288,7 +289,7 @@ public class Spit extends Main
             String choice2 = scan.nextLine().trim();
             System.out.println("What pile would you like to play the card in? (Type the corresponding number to the pile of your choice:\nPile One = 1, Pile Two = 2, Pile Three = 3, Pile Four = 4, Pile Five = 5, and your center pile = 6)");
             String pileChoice2 = scan.nextLine().trim();
-            
+
             playCard(choice2, pileChoice2);
         }
     }
@@ -385,7 +386,7 @@ public class Spit extends Main
             return false;
         }
     }
-    
+
     //specifically for the computer, not to be shown to player
     private void oppsPlayCard()
     {
@@ -443,7 +444,7 @@ public class Spit extends Main
                 playerPile.add(oppsFive.remove(oppsFive.size()-1));
                 System.out.println("Your opponent has played a " + playerPile.get(playerPile.size()-1));
             }
-        }else if(oppsPile.size() != 1)
+        }else if(oppsDeck.size() != 1)
         {
             if(checkCard(oppsPile, oppsDeck.get(oppsDeck.size()-1)))
             {
@@ -514,7 +515,7 @@ public class Spit extends Main
             for(int i = 0; i < oSize; i++)
             {
                 playerDeck.add(oppsPile.remove(0));
-                
+
             }
             for(int i = 0; i < dSize; i++)
             {
@@ -654,11 +655,11 @@ public class Spit extends Main
         }
         if(playerDeck.get(0) != "There's no cards in this pile")
         {
-            playerPile.add(playerDeck.remove(playerDeck.size()-1));        
+            playerPile.add(playerDeck.remove(playerDeck.size()-1));
         }
         if(oppsDeck.get(0) != "There's no cards in this pile")
         {
             oppsPile.add(oppsDeck.remove(oppsDeck.size()-1));
         }
-    } 
+    }
 }
