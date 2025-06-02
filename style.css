@@ -23,13 +23,13 @@ header
 }
 
 header h1{
-    position: absolute;
+    position: relative;
     font-size: 60px;
     font-weight: bold;
     z-index: 10;
     text-align:center;
-    top:2%;
-    left:40%;
+    top:-25%;
+    left:0%;
 }
 
 body{
