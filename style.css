@@ -7,6 +7,8 @@ header
 {
   color: #3a1e1e;
   background-color: #fff3c6;
+  background-image: url('Main_Banner.png');
+  backgroud-size: cover;
   border: 2px solid #a6192e;
   border-radius: 14px;
   padding: 20px;
