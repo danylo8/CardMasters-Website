@@ -14,7 +14,7 @@ public class Spoons {
     static ArrayList<String> originalDeck = new ArrayList<>();
     static ArrayList<String> playerDeck = new ArrayList<>();
     static ArrayList<String> oppsDeck =  new ArrayList<>();
-    static ArrayList<String> activeDeck = new ArrayList<>();
+    static ArrayList<String> discardDeck = new ArrayList<>();
     static String playerCardTarget;
     static String oppCardTarget;
     static boolean isSpoonTaken=false;
@@ -55,8 +55,48 @@ public class Spoons {
         Collections.shuffle(shuffledDeck);
     }
 
+    public void playerMove()
+    {
 
+        System.out.println("Your turn. Your cards: " + playerDeck);
 
+        for (int i=1; i<playerDeck.size(); i++)
+        {
+            System.out.println(i + ": " + playerDeck.get(i));
+        }
+            System.out.println("Type in the number of the card you want to discard");
+            String choice1 = scan.nextLine().trim();
+            String playedCard = playerDeck.remove(Integer.parseInt(choice1));
+            oppsDeck.add(playedCard);
+            System.out.println("You discard: " + playedCard);
+            expectedCard = expectedCard + 1;
+            for (int i=0; i<1; i++)
+            {
+                playerDeck.add(originalDeck[i])
+            }
+
+            playerTurn = false;
+            oppsTurn = true;
+        }
+
+    public void oppMove()
+    {
+
+        System.out.println("Opp's turn.");
+
+        for (int i=0; i<oppsDeck; i++)
+        {
+            if (Math.random()<0.3) {
+                discardOppCardIndex = i;
+            }
+
+        }
+        discardDeck.add(playedCard);
+        System.out.println("Opp discard: " + playedCard);
+        expectedCard = expectedCard + 1;
+        playerTurn = false;
+        oppsTurn = true;
+    }
 
 }
 
