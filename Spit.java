@@ -137,6 +137,10 @@ public class Spit extends Main
             oppsPlayCard();
             String og = playerDeck.get(playerDeck.size()-1);
             int chance = (int)(Math.random() * playerDeck.size()-1);
+            if(chance == 0)
+            {
+                chance++;
+            }
             String temp = playerDeck.get(chance);
             playerDeck.set(chance, og);
             playerDeck.set(playerDeck.size()-1, temp);
