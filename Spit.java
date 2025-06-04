@@ -24,11 +24,12 @@ public class Spit extends Main
     boolean oppsWin = false;
     int playerCards = 0;
     int oppsCards = 0;
+    String choice = "";
 
     public Spit()
     {
         //intro
-        System.out.println("Welcome to Spit! If you need to learn the rules, you may read them at the bottom of the page\n");
+        System.out.println("Welcome to Spit! If you need to learn the rules, you may take a moment to do so\n");
         intitalizeSpit();
         gameActive = true;
         //play loop
@@ -46,16 +47,20 @@ public class Spit extends Main
                     System.out.println("Sorry, but it looks like your opponent won the game, better luck next time!");
                 }
             }else{
-                System.out.println("\nWhat card would you like to play in your pile? (Type the card's full name)");
-                String choice = scan.nextLine().trim();
+                System.out.println("\nWhat card would you like to play? (Type the card's full name)");
+                System.out.println("If you wish to look for another card in your main deck to play, type in Other Card, if not then type in Skip");
+                choice = scan.nextLine().trim();
                 playCard(choice);
+                System.out.println("What pile would you like to play the card in? (Type the corresponding number to the pile of your choice:\nPile One = 1, Pile Two = 2, Pile Three = 3, Pile Four = 4, Pile Five = 5, your center pile = 6, and the 2nd center pile = 7)");
+                String pileChoice = scan.nextLine().trim();
+                playCard(choice, pileChoice);
                 oppsPlayCard();
-                winCheck();
-                //To display the decks to the player after cards have been played
-                System.out.println("Your cards are as follows:\n" + "Pile 1: "+ playerOne.get(0)+"\nPile 2: " + playerTwo.get(0) + "\nPile 3: " + playerThree.get(0)+ "\nPile 4: " + playerFour.get(0)+ "\nPile 5: " + playerFive.get(0) + "\nYour current hand: " + playerDeck.get(0));
-                System.out.println("Your center pile has the " + playerPile.get(0) + " and your opponents pile has the " + oppsPile.get(0));
                 playerCards = calculatePlayerCards();
                 oppsCards = calculateOppsCards();
+                winCheck();
+                //To display the decks to the player after cards have been played
+                System.out.println("Your cards are as follows:\n" + "Pile 1: "+ playerOne.get(playerOne.size()-1)+"\nPile 2: " + playerTwo.get(playerTwo.size()-1) + "\nPile 3: " + playerThree.get(playerThree.size()-1)+ "\nPile 4: " + playerFour.get(playerFour.size()-1)+ "\nPile 5: " + playerFive.get(playerFive.size()-1) + "\nYour current hand: " + playerDeck.get(playerDeck.size()-1));
+                System.out.println("Your center pile has the " + playerPile.get(playerPile.size()-1) + " and your opponents pile has the " + oppsPile.get(oppsPile.size()-1));
                 if(playerCards == playerDeck.size() || oppsCards == oppsDeck.size())
                 {
                     pileSlap();
@@ -73,6 +78,8 @@ public class Spit extends Main
         oppsDeck.clear();
         super.intitalizeDeck(mainDeck);
         super.shuffleDeck(mainDeck);
+        playerDeck.add("There's no cards in this pile");
+        oppsDeck.add("There's no cards in this pile");
         for(int i = 0; i < mainDeck.size();i++)
         {
             if(i % 2 == 0)
@@ -83,76 +90,207 @@ public class Spit extends Main
             }
         }
         //This took quite a bit of time to finalize
-        playerOne.add(playerDeck.remove(0));
-        oppsOne.add(oppsDeck.remove(0));
+        playerOne.add("There's no cards in this pile");
+        oppsOne.add("There's no cards in this pile");
+        playerTwo.add("There's no cards in this pile");
+        oppsTwo.add("There's no cards in this pile");
+        playerThree.add("There's no cards in this pile");
+        oppsThree.add("There's no cards in this pile");
+        playerFour.add("There's no cards in this pile");
+        oppsFour.add("There's no cards in this pile");
+        playerFive.add("There's no cards in this pile");
+        oppsFive.add("There's no cards in this pile");
+        playerPile.add("There's no cards in this pile");
+        oppsPile.add("There's no cards in this pile");
+        playerOne.add(playerDeck.remove(1));
+        oppsOne.add(oppsDeck.remove(1));
         for(int i = 0; i < 2; i++)
         {
-            playerTwo.add(playerDeck.remove(0));
-            oppsTwo.add(oppsDeck.remove(0));
+            playerTwo.add(playerDeck.remove(1));
+            oppsTwo.add(oppsDeck.remove(1));
         }
         for(int i = 0; i < 3; i++)
         {
-            playerThree.add(playerDeck.remove(0));
-            oppsThree.add(oppsDeck.remove(0));
+            playerThree.add(playerDeck.remove(1));
+            oppsThree.add(oppsDeck.remove(1));
         }
         for(int i = 0; i < 4; i++)
         {
-            playerFour.add(playerDeck.remove(0));
-            oppsFour.add(oppsDeck.remove(0));
+            playerFour.add(playerDeck.remove(1));
+            oppsFour.add(oppsDeck.remove(1));
         }
         for(int i = 0; i < 5; i++)
         {
-            playerFive.add(playerDeck.remove(0));
-            oppsFive.add(oppsDeck.remove(0));
+            playerFive.add(playerDeck.remove(1));
+            oppsFive.add(oppsDeck.remove(1));
         }
-        playerPile.add(playerDeck.remove(0));
-        oppsPile.add(oppsDeck.remove(0));
-        System.out.println("Your cards are as follows:\n" + "Pile 1: "+ playerOne.get(0)+"\nPile 2: " + playerTwo.get(0) + "\nPile 3: " + playerThree.get(0)+ "\nPile 4: " + playerFour.get(0)+ "\nPile 5: " + playerFive.get(0) + "\nYour current hand: " + playerDeck.get(0));
-        System.out.println("Your center pile has been set with the " + playerPile.get(0) + " and your opponents pile has been set with " + oppsPile.get(0));
+        playerPile.add(playerDeck.remove(1));
+        oppsPile.add(oppsDeck.remove(1));
+        System.out.println("Your cards are as follows:\n" + "Pile 1: "+ playerOne.get(playerOne.size()-1)+"\nPile 2: " + playerTwo.get(playerTwo.size()-1) + "\nPile 3: " + playerThree.get(playerThree.size()-1)+ "\nPile 4: " + playerFour.get(playerFour.size()-1)+ "\nPile 5: " + playerFive.get(playerFive.size()-1) + "\nYour current hand: " + playerDeck.get(playerDeck.size()-1));
+        System.out.println("Your center pile has been set with the " + playerPile.get(playerPile.size()-1) + " and your opponents pile has been set with the " + oppsPile.get(oppsPile.size()-1));
     }
 
-    public void playCard(String choice)
+    public void playCard(String answer)
     {
-        if(choice.equals(playerOne.get(0)))
+        if(answer.equals("Other Card"))
         {
-            if(checkCard(playerPile, choice))
+            oppsPlayCard();
+            String og = playerDeck.get(playerDeck.size()-1);
+            int chance = (int)(Math.random() * playerDeck.size()-1);
+            String temp = playerDeck.get(chance);
+            playerDeck.set(chance, og);
+            playerDeck.set(playerDeck.size()-1, temp);
+            System.out.println("Your cards are as follows:\n" + "Pile 1: "+ playerOne.get(playerOne.size()-1)+"\nPile 2: " + playerTwo.get(playerTwo.size()-1) + "\nPile 3: " + playerThree.get(playerThree.size()-1)+ "\nPile 4: " + playerFour.get(playerFour.size()-1)+ "\nPile 5: " + playerFive.get(playerFive.size()-1) + "\nYour current hand: " + playerDeck.get(playerDeck.size()-1));
+            System.out.println("Your center pile has the " + playerPile.get(playerPile.size()-1) + " and your opponents pile has the " + oppsPile.get(oppsPile.size()-1));
+            System.out.println("\nWhat card would you like to play? (Type the card's full name)");
+            System.out.println("If you wish to look for another card in your main deck to play, type in Other Card, if not then type in Skip");
+            String choice2 = scan.nextLine().trim();
+            playCard(choice2);
+            oppsPlayCard();
+        }else if(answer.equals("Skip")){
+            System.out.println("\nWhat card would you like to play? (Type the card's full name)\n");
+            choice = scan.nextLine().trim();
+        }
+    }
+
+    public void playCard(String choice, String pile)
+    {
+        if(choice.equals(playerOne.get(playerOne.size()-1)))
+        {
+            if(pile.equals("2") && checkCard(playerTwo, choice))
             {
-                playerPile.add(playerOne.remove(0));
+                playerPile.add(playerOne.remove(playerOne.size()-1));
+            }else if(pile.equals("3") && checkCard(playerThree, choice))
+            {
+                playerThree.add(playerOne.remove(playerOne.size()-1));
+            }else if(pile.equals("4") && checkCard(playerFour, choice))
+            {
+                playerFour.add(playerOne.remove(playerOne.size()-1));
+            }else if(pile.equals("5") && checkCard(playerFive, choice))
+            {
+                playerFive.add(playerOne.remove(playerOne.size()-1));
+            }else if(pile.equals("6") && checkCard(playerPile, choice))
+            {
+                playerPile.add(playerOne.remove(playerOne.size()-1));
+            }else if(pile.equals("7") && checkCard(oppsPile, choice))
+            {
+                oppsPile.add(playerOne.remove(playerOne.size()-1));
             }
-        }else if(choice.equals(playerTwo.get(0)))
+        }else if(choice.equals(playerTwo.get(playerTwo.size()-1)))
         {
-            if(checkCard(playerPile, choice))
+            if(pile.equals("1") && (checkCard(playerOne, choice)|| playerOne.size() == 1))
             {
-                playerPile.add(playerTwo.remove(0));
+                playerOne.add(playerTwo.remove(playerTwo.size()-1));
+            }else if(pile.equals("3") && (checkCard(playerThree, choice)|| playerThree.size() == 1))
+            {
+                playerThree.add(playerTwo.remove(playerTwo.size()-1));
+            }else if(pile.equals("4") && (checkCard(playerFour, choice)|| playerFour.size() == 1))
+            {
+                playerFour.add(playerTwo.remove(playerTwo.size()-1));
+            }else if(pile.equals("5") && (checkCard(playerFive, choice)|| playerFive.size() == 1))
+            {
+                playerFive.add(playerTwo.remove(playerTwo.size()-1));
+            }else if(pile.equals("6") && checkCard(playerPile, choice))
+            {
+                playerPile.add(playerTwo.remove(playerTwo.size()-1));
+            }else if(pile.equals("7") && checkCard(oppsPile, choice))
+            {
+                oppsPile.add(playerTwo.remove(playerTwo.size()-1));
             }
-        }else if(choice.equals(playerThree.get(0)))
+        }else if(choice.equals(playerThree.get(playerThree.size()-1)))
         {
-            if(checkCard(playerPile, choice))
+            if(pile.equals("1") && (checkCard(playerOne, choice)|| playerOne.size() == 1))
             {
-                playerPile.add(playerThree.remove(0));
+                playerOne.add(playerThree.remove(playerThree.size()-1));
+            }else if(pile.equals("2") && (checkCard(playerTwo, choice)|| playerTwo.size() == 1))
+            {
+                playerTwo.add(playerThree.remove(playerThree.size()-1));
+            }else if(pile.equals("4") && (checkCard(playerFour, choice)|| playerFour.size() == 1))
+            {
+                playerFour.add(playerThree.remove(playerThree.size()-1));
+            }else if(pile.equals("5") && (checkCard(playerFive, choice)|| playerFive.size() == 1))
+            {
+                playerFive.add(playerThree.remove(playerThree.size()-1));
+            }else if(pile.equals("6") && checkCard(playerPile, choice))
+            {
+                playerPile.add(playerThree.remove(playerThree.size()-1));
+            }else if(pile.equals("7") && checkCard(oppsPile, choice))
+            {
+                oppsPile.add(playerThree.remove(playerThree.size()-1));
             }
-        }else if(choice.equals(playerFour.get(0)))
+        }else if(choice.equals(playerFour.get(playerFour.size()-1)))
         {
-            if(checkCard(playerPile, choice))
+            if(pile.equals("1") && (checkCard(playerOne, choice)|| playerOne.size() == 1))
             {
-                playerPile.add(playerFour.remove(0));
+                playerOne.add(playerFour.remove(playerFour.size()-1));
+            }else if(pile.equals("2") && (checkCard(playerTwo, choice)|| playerTwo.size() == 1))
+            {
+                playerTwo.add(playerFour.remove(playerFour.size()-1));
+            }else if(pile.equals("3") && (checkCard(playerThree, choice)|| playerThree.size() == 1))
+            {
+                playerThree.add(playerFour.remove(playerFour.size()-1));
+            }else if(pile.equals("5") && (checkCard(playerFive, choice)|| playerFive.size() == 1))
+            {
+                playerFive.add(playerFour.remove(playerFour.size()-1));
+            }else if(pile.equals("6") && checkCard(playerPile, choice))
+            {
+                playerPile.add(playerFour.remove(playerFour.size()-1));
+            }else if(pile.equals("7") && checkCard(oppsPile, choice))
+            {
+                oppsPile.add(playerFour.remove(playerFour.size()-1));
             }
-        }else if(choice.equals(playerFive.get(0)))
+        }else if(choice.equals(playerFive.get(playerFive.size()-1)))
         {
-            if(checkCard(playerPile, choice))
+            if(pile.equals("1") && (checkCard(playerOne, choice)|| playerOne.size() == 1))
             {
-                playerPile.add(playerFive.remove(0));
+                playerOne.add(playerFive.remove(playerFive.size()-1));
+            }else if(pile.equals("2") && (checkCard(playerTwo, choice)|| playerTwo.size() == 1))
+            {
+                playerTwo.add(playerFive.remove(playerFive.size()-1));
+            }else if(pile.equals("3") && (checkCard(playerThree, choice)|| playerThree.size() == 1))
+            {
+                playerThree.add(playerFive.remove(playerFive.size()-1));
+            }else if(pile.equals("4") && (checkCard(playerFour, choice)|| playerFour.size() == 1))
+            {
+                playerFour.add(playerFive.remove(playerFive.size()-1));
+            }else if(pile.equals("6") && checkCard(playerPile, choice))
+            {
+                playerPile.add(playerThree.remove(playerThree.size()-1));
+            }else if(pile.equals("7") && checkCard(oppsPile, choice))
+            {
+                oppsPile.add(playerThree.remove(playerThree.size()-1));
             }
-        }else if(choice.equals(playerDeck.get(0)))
+        }else if(choice.equals(playerDeck.get(playerDeck.size()-1)))
         {
-            if(checkCard(playerPile, choice))
+            if(pile.equals("1") && (checkCard(playerOne, choice)|| playerOne.size() == 1))
             {
-                playerPile.add(playerDeck.remove(0));
+                playerOne.add(playerDeck.remove(playerDeck.size()-1));
+            }else if(pile.equals("2") && (checkCard(playerTwo, choice)|| playerTwo.size() == 1))
+            {
+                playerTwo.add(playerDeck.remove(playerDeck.size()-1));
+            }else if(pile.equals("3") && (checkCard(playerThree, choice)|| playerThree.size() == 1))
+            {
+                playerThree.add(playerDeck.remove(playerDeck.size()-1));
+            }else if(pile.equals("4") && (checkCard(playerFour, choice)|| playerFour.size() == 1))
+            {
+                playerFour.add(playerDeck.remove(playerDeck.size()-1));
+            }else if(pile.equals("5") && (checkCard(playerFive, choice)|| playerFive.size() == 1))
+            {
+                playerFive.add(playerDeck.remove(playerDeck.size()-1));
+            }else if(pile.equals("6") && checkCard(playerPile, choice))
+            {
+                playerPile.add(playerDeck.remove(playerDeck.size()-1));
+            }else if(pile.equals("7") && checkCard(oppsPile, choice))
+            {
+                oppsPile.add(playerDeck.remove(playerDeck.size()-1));
             }
         }else{
             System.out.println("Can't play that!, try another.");
             String choice2 = scan.nextLine().trim();
-            playCard(choice2);
+            System.out.println("What pile would you like to play the card in? (Type the corresponding number to the pile of your choice:\nPile One = 1, Pile Two = 2, Pile Three = 3, Pile Four = 4, Pile Five = 5, and your center pile = 6)");
+            String pileChoice2 = scan.nextLine().trim();
+
+            playCard(choice2, pileChoice2);
         }
     }
 
@@ -161,24 +299,76 @@ public class Spit extends Main
     {
         int refer = 0;
         int temp = 0;
-        if(deck.get(0).substring(0, 1).equals("Ace"))
+        if(deck.get(deck.size()-1).substring(0, 1).equals("Ace"))
         {
             refer = 1;
-        }else if(deck.get(0).substring(0, 1).equals("J"))
+        }else if(deck.get(deck.size()-1).substring(0, 1).equals("2"))
+        {
+            refer = 2;
+        }else if(deck.get(deck.size()-1).substring(0, 1).equals("3"))
+        {
+            refer = 3;
+        }else if(deck.get(deck.size()-1).substring(0, 1).equals("4"))
+        {
+            refer = 4;
+        }else if(deck.get(deck.size()-1).substring(0, 1).equals("5"))
+        {
+            refer = 5;
+        }else if(deck.get(deck.size()-1).substring(0, 1).equals("6"))
+        {
+            refer = 6;
+        }else if(deck.get(deck.size()-1).substring(0, 1).equals("7"))
+        {
+            refer = 7;
+        }else if(deck.get(deck.size()-1).substring(0, 1).equals("8"))
+        {
+            refer = 8;
+        }else if(deck.get(deck.size()-1).substring(0, 1).equals("9"))
+        {
+            refer = 9;
+        }else if(deck.get(deck.size()-1).substring(0, 1).equals("10"))
+        {
+            refer = 10;
+        }else if(deck.get(deck.size()-1).substring(0, 1).equals("J"))
         {
             refer = 11;
-        }else if(deck.get(0).substring(0, 1).equals("Q"))
+        }else if(deck.get(deck.size()-1).substring(0, 1).equals("Q"))
         {
             refer = 12;
-        }else if(deck.get(0).substring(0, 1).equals("K"))
+        }else if(deck.get(deck.size()-1).substring(0, 1).equals("K"))
         {
             refer = 13;
-        }else{
-            refer = Integer.parseInt(deck.get(0).substring(0, 1));
         }
         if(card.substring(0, 1).equals("Ace"))
         {
             temp = 1;
+        }else if(card.substring(0, 1).equals("2"))
+        {
+            temp = 2;
+        }else if(card.substring(0, 1).equals("3"))
+        {
+            temp = 3;
+        }else if(card.substring(0, 1).equals("4"))
+        {
+            temp = 4;
+        }else if(card.substring(0, 1).equals("5"))
+        {
+            temp = 5;
+        }else if(card.substring(0, 1).equals("6"))
+        {
+            temp = 6;
+        }else if(card.substring(0, 1).equals("7"))
+        {
+            temp = 7;
+        }else if(card.substring(0, 1).equals("8"))
+        {
+            temp = 8;
+        }else if(card.substring(0, 1).equals("9"))
+        {
+            temp = 9;
+        }else if(card.substring(0, 1).equals("10"))
+        {
+            temp = 10;
         }else if(card.substring(0, 1).equals("J"))
         {
             temp = 11;
@@ -188,47 +378,92 @@ public class Spit extends Main
         }else if(card.substring(0, 1).equals("K"))
         {
             temp = 13;
-        }else{
-            temp = Integer.parseInt(card.substring(0, 1));
         }
-        if(Math.abs(refer-temp)<= 1 || Math.abs(refer-temp)== 12 )
+        if(Math.abs(refer-temp) <= 1 || Math.abs(refer-temp) >= 12)
         {
             return true;
         }else{
             return false;
         }
     }
-    
+
     //specifically for the computer, not to be shown to player
     private void oppsPlayCard()
     {
-        if(checkCard(oppsPile, oppsOne.get(0)))
+        if(oppsOne.size() != 1)
         {
-            oppsPile.add(oppsOne.remove(0));
-        }else if(checkCard(oppsPile, oppsTwo.get(0)))
+            if(checkCard(oppsPile, oppsOne.get(1)))
+            {
+                oppsPile.add(oppsOne.remove(oppsOne.size()-1));
+                System.out.println("Your opponent has played a " + oppsPile.get(oppsPile.size()-1));
+            }else if(checkCard(playerPile, oppsOne.get(0)))
+            {
+                playerPile.add(oppsOne.remove(oppsOne.size()-1));
+                System.out.println("Your opponent has played a " + playerPile.get(playerPile.size()-1));
+            }
+        }else if(oppsTwo.size() != 1){
+            if(checkCard(oppsPile, oppsTwo.get(oppsTwo.size()-1)))
+            {
+                oppsPile.add(oppsTwo.remove(oppsTwo.size()-1));
+                System.out.println("Your opponent has played a " + oppsPile.get(oppsPile.size()-1));
+            }else if(checkCard(playerPile, oppsTwo.get(oppsTwo.size()-1)))
+            {
+                playerPile.add(oppsTwo.remove(oppsTwo.size()-1));
+                System.out.println("Your opponent has played a " + playerPile.get(playerPile.size()-1));
+            }
+        }else if(oppsThree.size() != 1)
         {
-            oppsPile.add(oppsTwo.remove(0));
-        }else if(checkCard(oppsPile, oppsThree.get(0)))
+            if(checkCard(oppsPile, oppsThree.get(oppsThree.size()-1)))
+            {
+                oppsPile.add(oppsThree.remove(oppsThree.size()-1));
+                System.out.println("Your opponent has played a " + oppsPile.get(oppsPile.size()-1));
+            }else if(checkCard(playerPile, oppsThree.get(oppsThree.size()-1)))
+            {
+                playerPile.add(oppsThree.remove(oppsThree.size()-1));
+                System.out.println("Your opponent has played a " + playerPile.get(playerPile.size()-1));
+            }
+        }else if(oppsFour.size() != 1)
         {
-            oppsPile.add(oppsThree.remove(0));
-        }else if(checkCard(oppsPile, oppsFour.get(0)))
+            if(checkCard(oppsPile, oppsFour.get(oppsFour.size()-1)))
+            {
+                oppsPile.add(oppsFour.remove(oppsFour.size()-1));
+                System.out.println("Your opponent has played a " + oppsPile.get(oppsPile.size()-1));
+            }else if(checkCard(playerPile, oppsFour.get(oppsFour.size()-1)))
+            {
+                playerPile.add(oppsFour.remove(oppsFour.size()-1));
+                System.out.println("Your opponent has played a " + playerPile.get(playerPile.size()-1));
+            }
+        }else if(oppsFive.size() != 1)
         {
-            oppsPile.add(oppsFour.remove(0));
-        }else if(checkCard(oppsPile, oppsFive.get(0)))
+            if(checkCard(oppsPile, oppsFive.get(oppsFive.size()-1)))
+            {
+                oppsPile.add(playerFive.remove(oppsFive.size()-1));
+                System.out.println("Your opponent has played a " + oppsPile.get(oppsPile.size()-1));
+            }else if(checkCard(playerPile, oppsFive.get(oppsFive.size()-1)))
+            {
+                playerPile.add(oppsFive.remove(oppsFive.size()-1));
+                System.out.println("Your opponent has played a " + playerPile.get(playerPile.size()-1));
+            }
+        }else if(oppsDeck.size() != 1)
         {
-            oppsPile.add(playerFive.remove(0));
-        }else if(checkCard(oppsPile, oppsDeck.get(0)))
-        {
-                oppsPile.add(oppsDeck.remove(0));
+            if(checkCard(oppsPile, oppsDeck.get(oppsDeck.size()-1)))
+            {
+                oppsPile.add(oppsDeck.remove(oppsDeck.size()-1));
+                System.out.println("Your opponent has played a " + oppsPile.get(oppsPile.size()-1));
+            }else if(checkCard(playerPile, oppsDeck.get(oppsDeck.size()-1)))
+            {
+                playerPile.add(oppsDeck.remove(oppsDeck.size()-1));
+                System.out.println("Your opponent has played a " + playerPile.get(playerPile.size()-1));
+            }
         }
     }
 
     public void winCheck()
     {
-        if(playerCards == 0)
+        if(playerCards == 6)
         {
             playerWin = true;
-        }else if(oppsCards == 0)
+        }else if(oppsCards == 6)
         {
             oppsWin = true;
         }
@@ -257,7 +492,7 @@ public class Spit extends Main
             }
             System.out.println("Too late, your opponent has already claimed Pile " +  desiredPile + ". You get pile " + otherPile);
         }else{
-            desiredPile = Integer.parseInt(choice);
+            desiredPile = Integer.valueOf(choice);
             otherPile = 3 - desiredPile;
         }
 
@@ -280,61 +515,61 @@ public class Spit extends Main
             for(int i = 0; i < oSize; i++)
             {
                 playerDeck.add(oppsPile.remove(0));
-                
+
             }
             for(int i = 0; i < dSize; i++)
             {
                 oppsDeck.add(playerPile.remove(0));
             }
         }
-        if(playerOne.get(0) != null)
+        if(playerOne.get(0) != "There's no cards in this pile")
         {
             playerDeck.add(playerOne.remove(0));
         }
-        if(oppsOne.get(0) != null)
+        if(oppsOne.get(0) != "There's no cards in this pile")
         {
             oppsDeck.add(oppsOne.remove(0));
         }
         for(int i = 0; i < 2; i++)
         {
-            if(playerTwo.get(0) != null)
+            if(playerTwo.get(0) != "There's no cards in this pile")
             {
                 playerDeck.add(playerTwo.remove(0));
             }
-            if(oppsTwo.get(0) != null)
+            if(oppsTwo.get(0) != "There's no cards in this pile")
             {
                 oppsDeck.add(oppsTwo.remove(0));
             }
         }
         for(int i = 0; i < 3; i++)
         {
-            if(playerThree.get(0) != null)
+            if(playerThree.get(0) != "There's no cards in this pile")
             {
                 playerDeck.add(playerThree.remove(0));
             }
-            if(oppsThree.get(0) != null)
+            if(oppsThree.get(0) != "There's no cards in this pile")
             {
                 oppsDeck.add(oppsThree.remove(0));
             }
         }
         for(int i = 0; i < 4; i++)
         {
-            if(playerFour.get(0) != null)
+            if(playerFour.get(0) != "There's no cards in this pile")
             {
                 playerDeck.add(playerFour.remove(0));
             }
-            if(oppsFour.get(0) != null)
+            if(oppsFour.get(0) != "There's no cards in this pile")
             {
                 oppsDeck.add(oppsFour.remove(0));
             }
         }
         for(int i = 0; i < 5; i++)
         {
-            if(playerFive.get(0) != null)
+            if(playerFive.get(0) != "There's no cards in this pile")
             {
                 playerDeck.add(playerFive.remove(0));
             }
-            if(oppsFive.get(0) != null)
+            if(oppsFive.get(0) != "There's no cards in this pile")
             {
                 oppsDeck.add(oppsFive.remove(0));
             }
@@ -369,61 +604,62 @@ public class Spit extends Main
     {
         shuffleDeck(playerDeck);
         shuffleDeck(oppsDeck);
-        playerOne.add(playerDeck.remove(0));
-        oppsOne.add(oppsDeck.remove(0));
+        playerOne.add(playerDeck.remove(playerDeck.size()-1));
+        oppsOne.add(oppsDeck.remove(oppsDeck.size()-1));
         for(int i = 0; i < 5; i++)
         {
             if(i <=1)
             {
-                if(playerDeck.get(0) != null)
+                if(playerDeck.get(0) != "There's no cards in this pile")
                 {
-                    playerTwo.add(playerDeck.remove(0));
+                    playerTwo.add(playerDeck.remove(playerDeck.size()-1));
                 }
-                if(oppsDeck.get(0) != null)
+                if(oppsDeck.get(0) != "There's no cards in this pile")
                 {
-                    oppsTwo.add(oppsDeck.remove(0));
+                    oppsTwo.add(oppsDeck.remove(oppsDeck.size()-1));
                 }
             }
             if(i <= 2)
             {
-                if(playerDeck.get(0) != null)
+                if(playerDeck.get(0) != "There's no cards in this pile")
                 {
-                    playerThree.add(playerDeck.remove(0));
+                    playerThree.add(playerDeck.remove(playerDeck.size()-1));
                 }
-                if(oppsDeck.get(0) != null)
+                if(oppsDeck.get(0) != "There's no cards in this pile")
                 {
-                    oppsThree.add(oppsDeck.remove(0));
+                    oppsThree.add(oppsDeck.remove(oppsDeck.size()-1));
                 }
             }
             if(i <= 3)
             {
-                if(playerDeck.get(0) != null)
+                if(playerDeck.get(0) != "There's no cards in this pile")
                 {
-                    playerFour.add(playerDeck.remove(0));
+                    playerFour.add(playerDeck.remove(playerDeck.size()-1));
                 }
-                if(oppsDeck.get(0) != null)
+                if(oppsDeck.get(0) != "There's no cards in this pile")
                 {
-                    oppsFour.add(oppsDeck.remove(0));
+                    oppsFour.add(oppsDeck.remove(oppsDeck.size()-1));
                 }
             }
             if(i <= 4)
             {
-                if(playerDeck.get(0) != null)
+                if(playerDeck.get(0) != "There's no cards in this pile")
                 {
-                    playerFive.add(playerDeck.remove(0));
+                    playerFive.add(playerDeck.remove(playerDeck.size()-1));
                 }
-                if(oppsDeck.get(0) != null)
+                if(oppsDeck.get(0) != "There's no cards in this pile")
                 {
-                    oppsFive.add(oppsDeck.remove(0));
+                    oppsFive.add(oppsDeck.remove(oppsDeck.size()-1));
                 }
             }
         }
-        if(playerDeck.get(0) != null)
+        if(playerDeck.get(0) != "There's no cards in this pile")
         {
-            playerPile.add(playerDeck.remove(0));        }
-        if(oppsDeck.get(0) != null)
+            playerPile.add(playerDeck.remove(playerDeck.size()-1));
+        }
+        if(oppsDeck.get(0) != "There's no cards in this pile")
         {
-            oppsPile.add(oppsDeck.remove(0));
+            oppsPile.add(oppsDeck.remove(oppsDeck.size()-1));
         }
     }
 }
