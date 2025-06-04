@@ -1,8 +1,11 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Spit extends Main
 {
+    static String[] cardNum = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
+    static String[] cardType = {"Hearts", "Spades", "Clubs", "Diamonds"};
     static ArrayList<String> mainDeck = new ArrayList<>();
     static ArrayList<String> playerDeck = new ArrayList<>();
     static ArrayList<String> oppsDeck =  new ArrayList<>();
@@ -76,8 +79,8 @@ public class Spit extends Main
     {
         playerDeck.clear();
         oppsDeck.clear();
-        super.intitalizeDeck(mainDeck);
-        super.shuffleDeck(mainDeck);
+        intitalizeDeck(mainDeck);
+        shuffleDeck(mainDeck);
         playerDeck.add("There's no cards in this pile");
         oppsDeck.add("There's no cards in this pile");
         for(int i = 0; i < mainDeck.size();i++)
@@ -128,6 +131,31 @@ public class Spit extends Main
         oppsPile.add(oppsDeck.remove(1));
         System.out.println("Your cards are as follows:\n" + "Pile 1: "+ playerOne.get(playerOne.size()-1)+"\nPile 2: " + playerTwo.get(playerTwo.size()-1) + "\nPile 3: " + playerThree.get(playerThree.size()-1)+ "\nPile 4: " + playerFour.get(playerFour.size()-1)+ "\nPile 5: " + playerFive.get(playerFive.size()-1) + "\nYour current hand: " + playerDeck.get(playerDeck.size()-1));
         System.out.println("Your center pile has been set with the " + playerPile.get(playerPile.size()-1) + " and your opponents pile has been set with the " + oppsPile.get(oppsPile.size()-1));
+    }
+
+    //Try to figure out a way to fix the code
+    public static void shuffleDeck(ArrayList<String> deck)
+    {
+        //String temp = "";
+        //for(int i = 0; i < deck.length; i++)
+        {
+            //temp = deck[i];
+            //deck[i] = deck[Math.random()*deck.length];
+            //deck[Math.random()*deck.length] = temp;
+            Collections.shuffle(deck);
+        }
+    }
+
+    public static void intitalizeDeck(ArrayList<String> deck)
+    {
+        deck.clear();
+        for(int i = 0; i < cardType.length; i++)
+        {
+            for(int j = 0;j < cardNum.length; j++)
+            {
+                deck.add(cardNum[j] + " of " + cardType[i]);
+            }
+        }
     }
 
     public void playCard(String answer)
