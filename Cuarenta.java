@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -17,46 +18,38 @@ public class Cuarenta extends Main
     static boolean playerTurn = true;
     static boolean oppsTurn = false;
     static boolean round = true;
-    static int oppPoints = 0; 
+    static int oppPoints = 0;
 
     public Cuarenta()
     {
         //intro
         System.out.println("Welcome to Cuarenta! If you need to learn the rules, you may read them at the bottom of the page\n");
-       
-        //set up of the decks 
-        intitalizeDeck(fourtyDeck);
+
+        //set up of the decks
+        playerDeck.clear();
+        oppsDeck.clear();
+        initializeDeck(fourtyDeck);
         shuffleDeck(fourtyDeck);
         for(int i = 0; i < 5; i++)
         {
-            String temp = fourtyDeck.get(i);
-            playerDeck.add(temp);
+            playerDeck.add(fourtyDeck.removeLast());
         }
         for(int i = 0; i < 5; i++)
         {
-            fourtyDeck.remove(0);
-        }
-        for(int i = 0; i < 5; i++)
-        {
-            String temp = fourtyDeck.get(i);
-            oppsDeck.add(temp);
-        }
-        for(int i = 0; i < 5; i++)
-        {
-            fourtyDeck.remove(0);
+
+            oppsDeck.add(fourtyDeck.removeLast());
         }
         System.out.println("Your cards are:");
         System.out.println(playerDeck);
 
         //initial 4OfAKind run
-        String temp = "";
-        if(!(fourOfAKind(playerDeck).equals(temp)))
+        if(!(fourOfAKind(playerDeck).isEmpty()))
         {
             System.out.println(fourOfAKind(playerDeck) + " You automatically win!");
-        }else if(!(fourOfAKind(oppsDeck).equals(temp)))
+        }else if(!(fourOfAKind(oppsDeck).isEmpty()))
         {
             System.out.println(fourOfAKind(oppsDeck) + " you automatically lose");
-        }else if(!(fourOfAKind(playerDeck).equals(temp)) && !(fourOfAKind(oppsDeck).equals(temp))){
+        }else if(!(fourOfAKind(playerDeck).isEmpty()) && !(fourOfAKind(oppsDeck).isEmpty())){
             System.out.println("It's a tie! Both players have gotten a four of a kind");
         }
 
@@ -65,15 +58,30 @@ public class Cuarenta extends Main
         {
             while(playerTurn)
             {
-                if(!(ronda(playerDeck).equals("")))
+                if(!(ronda(playerDeck).isEmpty()))
                 {
-                    ronda(playerDeck);
+                    System.out.println(ronda(playerDeck));
                     playerPoints += 4;
                 }
+                System.out.println(activeDeck);
                 System.out.println("What card do you want to play? Type the full name of the card in question");
                 String choice = scan.nextLine().trim();
-                playerDeck.remove(choice);
-                activeDeck.add(choice);
+                playCard(choice);
+                System.out.println("Would you like to check for a match or addition?");
+                String choice2 = scan.nextLine().trim();
+                if(choice.equals("match"))
+                {
+                    if(matching(choice))
+                    {
+                        playerTrick.add(activeDeck.removeLast());
+                        playerTrick.add(activeDeck.remove(activeDeck.size()-2));
+                    }
+                }else if(choice.equals("addition"))
+                {
+                    System.out.println("What cards do you wanna check? Type in the name of the card you are playing and the cards you are gonna add. Separate them by commas.");
+                    String choice3 = scan.nextLine().trim();
+                    addition(choice3);
+                }
                 System.out.println(activeDeck);
                 playerTurn = false;
                 oppsTurn = true;
@@ -81,7 +89,7 @@ public class Cuarenta extends Main
 
             while(oppsTurn)
             {
-                if(!(ronda(oppsDeck).equals("")))
+                if(!(ronda(oppsDeck).isEmpty()))
                 {
                     ronda(oppsDeck);
                     oppPoints += 4;
@@ -102,12 +110,12 @@ public class Cuarenta extends Main
         return playerDeck;
     }
 
-    public ArrayList<String> getoppsDeck()
+    public ArrayList<String> getOppsDeck()
     {
         return oppsDeck;
     }
-    
-    public static void intitalizeDeck(ArrayList<String> deck)
+
+    public static void initializeDeck(ArrayList<String> deck)
     {
         deck.clear();
         for(int i = 0; i < cardType.length; i++)
@@ -130,12 +138,13 @@ public class Cuarenta extends Main
                 if(j==i)
                 {
                     j++;
+                    j--;
                 }else if(deck.get(j).substring(0,1).equals(match))
                 {
                     temp++;
                 }
             }
-             if(temp >= 4)
+            if(temp >= 4)
             {
                 return "Four of a Kind! There are 4 cards of " + match;
             }else{
@@ -174,10 +183,10 @@ public class Cuarenta extends Main
         //String temp = "";
         //for(int i = 0; i < deck.length; i++)
         //{
-            //temp = deck[i];
-            //deck[i] = deck[Math.random()*deck.length];
-            //deck[Math.random()*deck.length] = temp;
-            Collections.shuffle(deck);
+        //temp = deck[i];
+        //deck[i] = deck[Math.random()*deck.length];
+        //deck[Math.random()*deck.length] = temp;
+        Collections.shuffle(deck);
         //}
     }
 
@@ -190,7 +199,7 @@ public class Cuarenta extends Main
         }
     }
 
-     public static void matchingOpp(ArrayList<String> deck, ArrayList<String> userDeck, int temp)
+    public static void matchingOpp(ArrayList<String> deck, ArrayList<String> userDeck, int temp)
     {
         if(deck.get(0).equals(userDeck.get(temp)))
         {
@@ -201,7 +210,7 @@ public class Cuarenta extends Main
 
     public String drawFromDeck(ArrayList<String> deck)
     {
-        if(deck.size() == 0)
+        if(deck.isEmpty())
         {
             return "There are no more cards! The game is over!";
         }else{
@@ -211,29 +220,128 @@ public class Cuarenta extends Main
 
     public boolean matching(String card)
     {
-        if(card.equals(activeDeck.get(activeDeck.size()-1)))
+        String temp1 = card.substring(0,1);
+        String temp2 = activeDeck.getLast().substring(0,1);
+        if(temp1.equals(temp2))
         {
             return true;
         }else{
             return false;
         }
     }
-    public String additon(String card)
+    public boolean addition(String cards)
     {
         int temp = 0;
-        int refer = Integer.parseInt(card.substring(0, 1));
-        for(int i = activeDeck.size()-1; temp < refer; i--)
+        int dividend = 0;
+        String regex = ",";
+        String[] arr = cards.split(regex);
+        for(int i = 0; i < arr.length; i--)
         {
-            if(!(activeDeck.get(i).substring(0, 1).equals("J") || activeDeck.get(i).substring(0, 1).equals("Q") || activeDeck.get(i).substring(0, 1).equals("K")))
+            String card = arr[i];
+            if(card.substring(0, 3).equals("Ace"))
             {
-                temp += Integer.parseInt(activeDeck.get(i).substring(0, 1));
+                temp += 1;
+                if(i == 0)
+                {
+                    dividend = 1;
+                }
+            }else if(card.substring(0, 1).equals("2"))
+            {
+                temp += 2;
+                if(i == 0)
+                {
+                    dividend = 2;
+                }
+            }else if(card.substring(0, 1).equals("3"))
+            {
+                temp += 3;
+                if(i == 0)
+                {
+                    dividend = 3;
+                }
+            }else if(card.substring(0, 1).equals("4"))
+            {
+                temp += 4;
+                if(i == 0)
+                {
+                    dividend = 4;
+                }
+            }else if(card.substring(0, 1).equals("5"))
+            {
+                temp += 5;
+                if(i == 0)
+                {
+                    dividend = 5;
+                }
+            }else if(card.substring(0, 1).equals("6"))
+            {
+                temp += 6;
+                if(i == 0)
+                {
+                    dividend = 6;
+                }
+            }else if(card.substring(0, 1).equals("7"))
+            {
+                temp += 7;
+                if(i == 0)
+                {
+                    dividend = 7;
+                }
+            }else if(card.substring(0, 1).equals("J"))
+            {
+                temp += 11;
+                if(i == 0)
+                {
+                    dividend = 11;
+                }
+            }else if(card.substring(0, 1).equals("Q"))
+            {
+                temp += 12;
+                if(i == 0)
+                {
+                    dividend = 12;
+                }
+            }else if(card.substring(0, 1).equals("K")) {
+                temp += 13;
+                if(i == 0)
+                {
+                    dividend = 13;
+                }
             }
-        } 
-        if(temp == refer)
-        {
-            return "";
-        }else{
-            return "";
         }
+        if(temp / dividend == 2)
+        {
+            System.out.println("These cards shall be added to your trick pile");
+            return true;
+        }else{
+            System.out.println("These cards do not work");
+            return false;
+        }
+    }
+
+    public void playCard(String answer)
+    {
+        for(int i = 0; i < playerDeck.size(); i++)
+        {
+            if(playerDeck.get(i).equals(answer))
+            {
+                activeDeck.add(playerDeck.remove(i));
+            }
+        }
+    }
+
+    public void restartCuarenta()
+    {
+        for(int i = 0; i < 5; i++)
+        {
+            playerDeck.add(fourtyDeck.removeLast());
+        }
+        for(int i = 0; i < 5; i++)
+        {
+
+            oppsDeck.add(fourtyDeck.removeLast());
+        }
+        System.out.println("Your cards are:");
+        System.out.println(playerDeck);
     }
 }
