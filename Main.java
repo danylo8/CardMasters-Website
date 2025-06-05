@@ -17,8 +17,8 @@ public class Main
         String choice = scan.nextLine().trim();
         if(choice.equals("Cuarenta"))
         {
-            //System.out.println("Sorry, i don't know how to speak Spanish, or Portuguese");
-            Cuarenta gameCuarenta = new Cuarenta();
+            System.out.println("Sorry, i do not know how to speak Spanish");
+            //Cuarenta gameCuarenta = new Cuarenta();
         }else if(choice.equals("Spit"))
         {
             Spit spitGame = new Spit();
