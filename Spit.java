@@ -524,7 +524,7 @@ public class Spit extends Main
             }
             System.out.println("Too late, your opponent has already claimed Pile " +  desiredPile + ". You get pile " + otherPile);
         }else{
-            desiredPile = Integer.valueOf(choice);
+            desiredPile = Integer.parseInt(choice);
             otherPile = 3 - desiredPile;
         }
 
