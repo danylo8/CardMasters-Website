@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Spit extends Main
 {
+    //i forgot why i made everything static tbh, probably nothing to worry about
     static String[] cardNum = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
     static String[] cardType = {"Hearts", "Spades", "Clubs", "Diamonds"};
     static ArrayList<String> mainDeck = new ArrayList<>();
@@ -172,15 +173,15 @@ public class Spit extends Main
             String temp = playerDeck.get(chance);
             playerDeck.set(chance, og);
             playerDeck.set(playerDeck.size()-1, temp);
-            System.out.println("Your cards are as follows:\n" + "Pile 1: "+ playerOne.get(playerOne.size()-1)+"\nPile 2: " + playerTwo.get(playerTwo.size()-1) + "\nPile 3: " + playerThree.get(playerThree.size()-1)+ "\nPile 4: " + playerFour.get(playerFour.size()-1)+ "\nPile 5: " + playerFive.get(playerFive.size()-1) + "\nYour current hand: " + playerDeck.get(playerDeck.size()-1));
-            System.out.println("Your center pile has the " + playerPile.get(playerPile.size()-1) + " and your opponents pile has the " + oppsPile.get(oppsPile.size()-1));
-            System.out.println("\nWhat card would you like to play? (Type the card's full name)");
+            System.out.println("\nYour cards are as follows:\n" + "Pile 1: "+ playerOne.get(playerOne.size()-1)+"\nPile 2: " + playerTwo.get(playerTwo.size()-1) + "\nPile 3: " + playerThree.get(playerThree.size()-1)+ "\nPile 4: " + playerFour.get(playerFour.size()-1)+ "\nPile 5: " + playerFive.get(playerFive.size()-1) + "\nYour current hand: " + playerDeck.get(playerDeck.size()-1));
+            System.out.println("Your center pile has the " + playerPile.get(playerPile.size()-1) + " and your opponents pile has the " + oppsPile.get(oppsPile.size()-1)+"\n");
+            System.out.println("What card would you like to play? (Type the card's full name)");
             System.out.println("If you wish to look for another card in your main deck to play, type in Other Card, if not then type in Skip");
             String choice2 = scan.nextLine().trim();
             playCard(choice2);
             oppsPlayCard();
         }else if(answer.equals("Skip")){
-            System.out.println("\nWhat card would you like to play? (Type the card's full name)\n");
+            System.out.println("\nWhat card would you like to play? (Type the card's full name)");
             choice = scan.nextLine().trim();
         }
     }
@@ -317,11 +318,11 @@ public class Spit extends Main
                 oppsPile.add(playerDeck.remove(playerDeck.size()-1));
             }
         }else{
-            System.out.println("Can't play that!, try another.");
+            System.out.println("Can't play that!, try another. If you wish to, you may type in Other Card");
             String choice2 = scan.nextLine().trim();
+            playCard(choice2);
             System.out.println("What pile would you like to play the card in? (Type the corresponding number to the pile of your choice:\nPile One = 1, Pile Two = 2, Pile Three = 3, Pile Four = 4, Pile Five = 5, and your center pile = 6)");
             String pileChoice2 = scan.nextLine().trim();
-
             playCard(choice2, pileChoice2);
         }
     }
@@ -487,6 +488,8 @@ public class Spit extends Main
                 playerPile.add(oppsDeck.remove(oppsDeck.size()-1));
                 System.out.println("Your opponent has played a " + playerPile.get(playerPile.size()-1));
             }
+        }else{
+            System.out.println("Your opponent has not played a card yet");
         }
     }
 
