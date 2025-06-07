@@ -428,7 +428,7 @@ public class Spit extends Main
             {
                 oppsPile.add(oppsOne.remove(oppsOne.size()-1));
                 System.out.println("Your opponent has played a " + oppsPile.get(oppsPile.size()-1));
-            }else if(checkCard(playerPile, oppsOne.get(0)))
+            }else if(checkCard(playerPile, oppsOne.get(1)))
             {
                 playerPile.add(oppsOne.remove(oppsOne.size()-1));
                 System.out.println("Your opponent has played a " + playerPile.get(playerPile.size()-1));
