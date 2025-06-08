@@ -33,6 +33,7 @@ public class BS
     static JPanel playerDeckUI=new JPanel();
     static JLabel mascotImageUI=new JLabel();
     static JLabel playerImageUI=new JLabel();
+    static JLabel activeDeckTable=new JLabel();
 
     public BS()
     {
@@ -76,14 +77,14 @@ public class BS
         frame.setVisible(true);
 
 
-        ImageIcon mascotImage=new ImageIcon("images/Mascot_Cards.png");
+        ImageIcon mascotImage=new ImageIcon("images/Mascot_Overhead.png");
         mascotImageUI= new JLabel(mascotImage);
         mascotImageUI.setBounds(270,-30,160,200);
         frame.add(mascotImageUI);
         mascotImageUI.revalidate();
         mascotImageUI.repaint();
 
-        ImageIcon playerImage=new ImageIcon("images/Player_Cards.png");
+        ImageIcon playerImage=new ImageIcon("images/Player_Overhead.png");
         playerImageUI= new JLabel(playerImage);
         playerImageUI.setBounds(495,350,160,200);
         frame.add(playerImageUI);
@@ -92,13 +93,29 @@ public class BS
 
         ImageIcon backCard=new ImageIcon("cards/BACK.png");
 
+
+        ImageIcon table=new ImageIcon("images/Table_Overhead.png");
+        activeDeckTable= new JLabel(table);
+        activeDeckTable.setBounds(0,0,130,130);
+        activeDeckTable.revalidate();
+        activeDeckTable.repaint();
+
         activeDeckUI= new JLabel(backCard);
-        activeDeckUI.setBounds(320,150,60,90);
+        activeDeckUI.setBounds(45,30,41,60);
         frame.add(activeDeckUI);
         frame.setVisible(true);
         activeDeckUI.revalidate();;
         activeDeckUI.repaint();
 
+
+        JLayeredPane layeredPane=new JLayeredPane();
+        layeredPane.setBounds(290,130,130,130);
+        layeredPane.add(activeDeckUI, Integer.valueOf(1));
+        layeredPane.add(activeDeckTable, Integer.valueOf(0));
+        frame.add(layeredPane);
+        frame.setVisible(true);
+        layeredPane.revalidate();;
+        layeredPane.repaint();
 
         playerDeckUI= new JPanel(null);
         playerDeckUI.setBounds(20,280,680,100);
@@ -236,11 +253,12 @@ public class BS
             if(oppHasAce==true)
             {
                 log.append("Opp has Ace of Spades and will start. \n");
-              //  System.out.println("Opp has Ace of Spades and will start.");
+              System.out.println("Opp has Ace of Spades and will start.");
                 playerTurn=false;
                 oppsTurn=true;
                 PlayerCallBS=false;
                 OppCallBS=false;
+                oppHasAce=false;
             }
 
         }
