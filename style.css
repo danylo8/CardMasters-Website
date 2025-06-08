@@ -56,20 +56,21 @@ h2{
 }
 
 .navbar {
-    width: 60%;
+    width: 70%;
+    height: 20%;
 }
 .navbar ul{
     position:relative;
-    left: 32.5%;
+    left: 21.5%;
     list-style: none;
     background-color: #fff3c6;
     padding: 10px;
-    margin: 0px;
     text-align: center;
     border: 2px solid #a6192e;
     border-radius: 12px;
     box-shadow: 0 6px 15px rgba(122, 24, 18, 0.25);
-
+    background-image: url('images/nav-bar-background.png');
+    background-position:45% 10%;
 }
 
 .navbar a{
@@ -342,13 +343,14 @@ video.bg-right2 {
 }
 
 .overlay {
-  position: fixed;
-  top: 0;
-  bottom: 0;
+  position: relative;
+  top: 0%;
+  bottom: 0%;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.7);
-  transition: opacity 500ms;
+  background: rgba(0, 0, 0, 0);
+  width:100%;
+  height:100%;
   visibility: hidden;
   opacity: 0;
   z-index: 1000;
@@ -360,15 +362,35 @@ video.bg-right2 {
 }
 
 .popup {
-  margin: 220px;
-  padding: 330px;
+  padding: 100px;
   background: #fff;
   border-radius: 5px;
-  width: 300px;
-  position: relative;
-  transition: all 5s ease-in-out;
+  width: 38%;
+  height: 420px;
+  top:45%;
+  left:24%;
+  position: absolute;
+  border: 2px solid #7a1812;
+  border-radius: 15px;
+  background-image: url('images/Work_in_Progress.png');
+  background-position: center;
+
 }
 
+
+.popup h2
+
+{
+    text-align: top;
+    margin-top:20px;
+}
+
+.popup h3
+{
+    text-align: center;
+    margin-top:100px;
+
+}
 .popup .close {
   position: absolute;
   top: 20px;
@@ -379,3 +401,5 @@ video.bg-right2 {
   text-decoration: none;
   color: #333;
 }
+
+
