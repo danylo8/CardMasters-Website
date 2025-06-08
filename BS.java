@@ -71,7 +71,7 @@ public class BS
         JScrollPane scrollPane=new JScrollPane(log);
         frame.add(scrollPane);
         frame.setVisible(true);
-        scrollPane.setBounds(0,430,490,100);
+        scrollPane.setBounds(50,430,590,100);
         frame.add(scrollPane);
 
         frame.setVisible(true);
@@ -79,14 +79,14 @@ public class BS
 
         ImageIcon mascotImage=new ImageIcon("images/Mascot_Overhead.png");
         mascotImageUI= new JLabel(mascotImage);
-        mascotImageUI.setBounds(270,-30,160,200);
+        mascotImageUI.setBounds(275,20,160,200);
         frame.add(mascotImageUI);
         mascotImageUI.revalidate();
         mascotImageUI.repaint();
 
         ImageIcon playerImage=new ImageIcon("images/Player_Overhead.png");
         playerImageUI= new JLabel(playerImage);
-        playerImageUI.setBounds(495,350,160,200);
+        playerImageUI.setBounds(340,115,160,200);
         frame.add(playerImageUI);
         playerImageUI.revalidate();
         playerImageUI.repaint();
