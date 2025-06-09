@@ -362,7 +362,7 @@ video.bg-right2 {
 
 .popup {
   padding: 100px;
-  background: #fff;
+  background: #ffffff;
   border-radius: 5px;
   width: 38%;
   height: 420px;
@@ -398,7 +398,7 @@ video.bg-right2 {
   font-size: 30px;
   font-weight: bold;
   text-decoration: none;
-  color: #333;
+  color: #333333;
 }
 
 

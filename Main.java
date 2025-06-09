@@ -11,7 +11,7 @@ public class Main
 
         System.out.println("What card game would you like to play?");
         System.out.println("There is Spit, Spoons, and BS");
-        System.out.println("Type in the exact title of the game you would like to play");
+        System.out.println("Type in the exact title of the game you would like to play: ");
         String choice = scan.nextLine().trim();
 
 
