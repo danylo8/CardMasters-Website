@@ -319,6 +319,7 @@ public class BS
                     playerCardsUI();
                     System.out.println("They now have " + oppsDeck);
                     log.append("They now have " + oppsDeck + "\n");
+                    expectedCard=0;
                 } else {
                     System.out.println("Opp put down the right card. Player picks up the deck.");
                     lastExpectedCard=0;
@@ -333,6 +334,7 @@ public class BS
                     playerCardsUI();
                     System.out.println("You now have " + playerDeck);
                     log.append("You now have " + playerDeck + "\n");
+                    expectedCard=0;
             }}}
 
             public static void oppMove()
@@ -381,6 +383,7 @@ public class BS
                         playerCardsUI();
                         System.out.println("You now have " + playerDeck);
                         log.append("You now have " + playerDeck + "\n");
+                        expectedCard=0;
                     } else {
                         System.out.println("Player put the right card. Opp picks up the deck.");
                         log.append("Player put the right card. Opp picks up the deck.\n");
@@ -395,6 +398,7 @@ public class BS
                         playerCardsUI();
                         log.append("They now have " + oppsDeck+"\n");
                         System.out.println("They now have " + oppsDeck+"\n");
+                        expectedCard=0;
                     }
 
                 }
