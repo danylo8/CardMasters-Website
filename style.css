@@ -62,7 +62,6 @@ h2{
 .navbar ul{
     position:relative;
     left: 21.5%;
-    list-style: none;
     background-color: #fff3c6;
     padding: 10px;
     text-align: center;
@@ -94,7 +93,7 @@ h2{
 }
 
 .navbar li{
-    display:inline-block;
+    display: inline-block;
 
 }
 
